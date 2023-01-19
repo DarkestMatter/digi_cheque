@@ -8,14 +8,26 @@ export const bankUserLogin: RequestHandler = (req, res, next) => {
       { userName: req.body.username },
       (err: Error, result: IBankLogin[]) => {
         if (!err) {
-          res.json(
-            result.map((e) => {
-              return {
-                name: e.userName,
-                userId: e.password,
-              };
-            })
-          );
+          if (!result.length) {
+            res.json({
+              status: "failed",
+            });
+          } else {
+            const userObj = result.find(
+              (e) =>
+                e.userName === req.body.username &&
+                e.password === req.body.password
+            );
+            if (userObj) {
+              res.json({
+                status: "success",
+              });
+            } else {
+              res.json({
+                status: "failed",
+              });
+            }
+          }
         } else {
           res.json("some error occurred");
         }
