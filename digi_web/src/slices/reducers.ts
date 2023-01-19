@@ -1,5 +1,5 @@
-import { userReducer } from "./userDetail/userSlice";
+import { userInputReducer } from "./userDetail/userSlice";
 
 export const reducers = {
-  addUser: userReducer,
+  form: userInputReducer,
 };
