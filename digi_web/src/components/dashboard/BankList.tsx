@@ -1,10 +1,8 @@
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  NativeSelect,
-  Select,
-} from "@mui/material";
+import { FormControl, InputLabel, NativeSelect, Select } from "@mui/material";
+import { ChangeEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateChequeFormData } from "../../slices/CreateCheque";
+import { RootState } from "../../store";
 
 const banks = [
   {
@@ -18,6 +16,15 @@ const banks = [
 ];
 
 export const BankList = () => {
+  const dispatch = useDispatch();
+  const { bankId } = useSelector(
+    (state: RootState) => state.createCheque.createChequeForm
+  );
+  const handleUpdate = (e: ChangeEvent<HTMLSelectElement>) => {
+    dispatch(
+      updateChequeFormData({ name: e.target.name, value: e.target.value })
+    );
+  };
   return (
     <FormControl fullWidth>
       <InputLabel variant="standard" htmlFor="uncontrolled-native">
@@ -26,9 +33,11 @@ export const BankList = () => {
       <NativeSelect
         defaultValue={30}
         inputProps={{
-          name: "age",
+          name: "bankId",
           id: "uncontrolled-native",
         }}
+        onChange={(e) => handleUpdate(e)}
+        value={bankId}
       >
         {banks.map((bank) => {
           return (
