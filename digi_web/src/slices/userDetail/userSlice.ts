@@ -1,16 +1,26 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initialState } from "../../interfaces/login/initialState";
+import { IUserInput } from "../../interfaces/login/IUserInput";
 
 export const userSlice = createSlice({
-  name: "userDetail",
+  name: "userInput",
   initialState: initialState,
   reducers: {
-    addUserDetail: (state, action: PayloadAction<string>) => {
-      state.userName = action.payload;
+    updateForm: (state, action: PayloadAction<IUserInput>) => {
+      switch (true) {
+        case Object.keys(action.payload).includes("userName"):
+          state.userName = action.payload.userName;
+        case Object.keys(action.payload).includes("userId"):
+          state.userId = action.payload.userId;
+        case Object.keys(action.payload).includes("bankLoginUserName"):
+          state.bankLoginUserName = action.payload.bankLoginUserName;
+        case Object.keys(action.payload).includes("bankLoginPassword"):
+          state.bankLoginPassword = action.payload.bankLoginPassword;
+      }
     },
   },
 });
 
-export const { addUserDetail } = userSlice.actions;
+export const { updateForm } = userSlice.actions;
 
-export const userReducer = userSlice.reducer;
+export const userInputReducer = userSlice.reducer;

@@ -3,4 +3,4 @@ import { RootState } from "../store";
 
 export const state = (state: RootState) => state;
 
-export const getUserDetail = createSelector(state, (state) => state.addUser);
+export const getUserInput = createSelector(state, (state) => state.form);

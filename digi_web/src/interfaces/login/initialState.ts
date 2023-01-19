@@ -1,6 +1,8 @@
-import { IUserDetail } from "./IUserDetail";
+import { IUserInput } from "./IUserInput";
 
-export const initialState: IUserDetail = {
+export const initialState: IUserInput = {
   userName: "",
-  userId: 123,
+  userId: "",
+  bankLoginUserName: "",
+  bankLoginPassword: "",
 };
