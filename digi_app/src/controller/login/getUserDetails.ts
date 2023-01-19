@@ -1,10 +1,10 @@
 import { RequestHandler } from "express";
-import { IStockList } from "../../interface/login/IUserDetails";
-import { stockListModel } from "../../model/login/userDetailsModel";
+import { IUserDetail } from "../../interface/login/IUserDetails";
+import { userDetailModel } from "../../model/login/userDetailsModel";
 
 export const getUserDetails: RequestHandler = (req, res, next) => {
   try {
-    stockListModel().find({}, (err: Error, result: IStockList[]) => {
+    userDetailModel().find({}, (err: Error, result: IUserDetail[]) => {
       if (!err) {
         res.json(
           result.map((e) => {

@@ -1,5 +1,5 @@
 import { LoginDetails } from "./loginDetails";
 
-export const Dashboard: React.FC = () => {
+export const Login: React.FC = () => {
   return <LoginDetails />;
 };

@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import { IStockList } from "../../interface/login/IUserDetails";
+import { IUserDetail } from "../../interface/login/IUserDetails";
 
-const stockListSchema = new mongoose.Schema<IStockList>({
+const userDetailSchema = new mongoose.Schema<IUserDetail>({
   userName: String,
   userId: Number,
 });
-export const stockListModel = () => mongoose.model("m_stock", stockListSchema);
+export const userDetailModel = () => mongoose.model("user", userDetailSchema);
