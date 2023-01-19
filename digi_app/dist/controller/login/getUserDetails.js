@@ -6,12 +6,7 @@ const getUserDetails = (req, res, next) => {
     try {
         (0, userDetailsModel_1.userDetailModel)().find({}, (err, result) => {
             if (!err) {
-                res.json(result.map((e) => {
-                    return {
-                        name: e.userName,
-                        userId: e.userId,
-                    };
-                }));
+                res.json(console.log(result));
             }
             else {
                 res.json("some error occurred");

@@ -11,8 +11,13 @@ const mongoose_1 = __importDefault(require("mongoose"));
 //   return obj.stack;
 // };
 const connect_db = () => {
+    const uri = "mongodb+srv://<userName>:<pwd>@cluster0.tjhxona.mongodb.net/digi_cheque?retryWrites=true&w=majority";
     try {
-        mongoose_1.default.connect("mongodb://127.0.0.1/digi_db");
+        //mongoose.connect("mongodb://127.0.0.1/digi_db");
+        mongoose_1.default.connect(uri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
         mongoose_1.default.Promise = require("bluebird");
     }
     catch (err) {
