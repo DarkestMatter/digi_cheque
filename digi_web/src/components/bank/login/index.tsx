@@ -25,11 +25,13 @@ export const BankLogin: React.FC = () => {
     navigate("/bankAuth");
   };
   return (
-    <Grid container xs={12}>
-      <Typography variant="h5" noWrap>
-        SYNEBANK
-      </Typography>
-      <FormControl fullWidth>
+    <Grid container xs={12} justifyContent="center">
+      <Grid container xs={12} justifyContent="center">
+        <Typography variant="h5" noWrap>
+          SYNEBANK
+        </Typography>
+      </Grid>
+      <FormControl style={{ width: "50%" }}>
         <TextField
           id="bankUserName"
           value={bankLoginUserName}
@@ -52,10 +54,19 @@ export const BankLogin: React.FC = () => {
           value={bankLoginPassword}
           onChange={(e) => handleInputChange(e, "bankLoginPassword")}
         />
+        <Button
+          variant="contained"
+          onClick={() => {}}
+          style={{
+            width: "25%",
+            marginRight: "auto",
+            marginLeft: "auto",
+            marginTop: "10px",
+          }}
+        >
+          Login
+        </Button>
       </FormControl>
-      <Button variant="contained" onClick={() => {}}>
-        Login
-      </Button>
     </Grid>
   );
 };

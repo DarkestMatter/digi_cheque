@@ -29,7 +29,9 @@ export const CreateChequePopup = () => {
       return { shouldShowCreateChequePopup, createChequeIsInProgress };
     }
   );
-  const handleUpdate = (e: ChangeEvent<HTMLSelectElement>) => {
+  const handleUpdate = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     dispatch(
       updateChequeFormData({ name: e.target.name, value: e.target.value })
     );
