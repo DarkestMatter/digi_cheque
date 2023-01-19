@@ -8,7 +8,7 @@ const createChequeSchema = new mongoose.Schema<ICreatechequerequest>({
     mobileNo:Number,
     chequeStatus:String,
     bankName:String,
-    checkClearanceDate: Date,
+    chequeClearanceDate: Date,
     createdDate: Date,
     updatedDate: Date
 });

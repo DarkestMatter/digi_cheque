@@ -6,7 +6,7 @@ export interface ICreatechequerequest{
     mobileNo:number
     chequeStatus:string
     bankName:string
-    checkClearanceDate:string
+    chequeClearanceDate:string
     createdDate:Date
     updatedDate:Date
 }

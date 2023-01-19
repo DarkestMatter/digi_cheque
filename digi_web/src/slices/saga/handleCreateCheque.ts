@@ -5,13 +5,14 @@ export function* handleCreateCheque() {
   try {
     yield put(setCreateChequeIsInProgress(true));
     const state: RootState = yield select();
-    const { amount, name, chequeClearanceDate, bankId } =
+    const { amount, name, chequeClearanceDate, bankId,mobileNumber } =
       state.createCheque.createChequeForm;
     const request = {
-      Amount: amount,
-      Name: name,
-      ChequeClearanceDate: chequeClearanceDate,
-      BankId: bankId,
+      amount,
+      name,
+      chequeClearanceDate,
+      bankName: bankId,
+      mobileNo:mobileNumber,
     };
   } catch (error) {
   } finally {
