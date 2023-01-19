@@ -1,3 +1,3 @@
 export const envProp = {
-  api: "/api",
+  api: "http://localhost:4000/api",
 };
