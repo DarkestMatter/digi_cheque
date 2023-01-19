@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { FormControl, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { ChangeEvent } from "react";
@@ -26,23 +26,36 @@ export const BankLogin: React.FC = () => {
   };
   return (
     <Grid container xs={12}>
-      <TextField
-        id="bankUserName"
-        value={bankLoginUserName}
-        variant="outlined"
-        size="small"
-        label="UserName"
-        onChange={(e) => handleInputChange(e, "bankLoginUserName")}
-      />
-      <TextField
-        id="bankPassword"
-        variant="outlined"
-        size="small"
-        label="Password"
-        type="password"
-        value={bankLoginPassword}
-        onChange={(e) => handleInputChange(e, "bankLoginPassword")}
-      />
+      <Typography variant="h5" noWrap>
+        SYNEBANK
+      </Typography>
+      <FormControl fullWidth>
+        <TextField
+          id="bankUserName"
+          value={bankLoginUserName}
+          variant="outlined"
+          size="small"
+          label="UserName"
+          margin="dense"
+          autoFocus
+          required
+          onChange={(e) => handleInputChange(e, "bankLoginUserName")}
+        />
+        <TextField
+          id="bankPassword"
+          required
+          variant="outlined"
+          size="small"
+          label="Password"
+          type="password"
+          margin="dense"
+          value={bankLoginPassword}
+          onChange={(e) => handleInputChange(e, "bankLoginPassword")}
+        />
+      </FormControl>
+      <Button variant="contained" onClick={() => {}}>
+        Login
+      </Button>
     </Grid>
   );
 };
