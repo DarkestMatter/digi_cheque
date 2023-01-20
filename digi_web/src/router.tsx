@@ -16,8 +16,6 @@ export const Router: React.FC = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/auth" element={<Authorization />} />
         <Route path="/profile" element={<UserDetails />} />
-
-        {/* <Route path="/gallery/:galleryType" element={<Gallery />} /> */}
       </Routes>
     </BrowserRouter>
   );

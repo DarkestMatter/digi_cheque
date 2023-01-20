@@ -1,9 +1,10 @@
 import { Dayjs } from "dayjs";
-export interface ICreateChequeForm {
+export interface ICreateChequeRequest {
+  userid: string;
   amount: number | null;
   name: string | null;
-  mobileNumber: number | null;
-  bankId: string | null;
   chequeClearanceDate: Date | Dayjs | null;
+  bankName: string | null;
+  mobileNo: number | null;
   email: string | null;
 }

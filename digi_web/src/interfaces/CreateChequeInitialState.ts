@@ -1,4 +1,5 @@
 import { ICreateChequeForm } from "./Cheque/createChequeForm";
+import { IcurrentTransactionDetails } from "./Cheque/currentTransactionDetails";
 import { IProfileDetails } from "./Cheque/profileDetails";
 
 export interface ICreateChequeInitialState {
@@ -6,4 +7,5 @@ export interface ICreateChequeInitialState {
   createChequeForm: ICreateChequeForm;
   createChequeIsInProgress: boolean;
   profileDetails: IProfileDetails;
+  currentTransactionDetails: IcurrentTransactionDetails;
 }
