@@ -1,5 +1,6 @@
 import { takeLatest } from "redux-saga/effects";
 import {
+  getChequeHistoryRequest,
   getProfileDetailsRequest,
   handleCreateChequeRequest,
 } from "./CreateCheque";
@@ -11,6 +12,7 @@ import { handleVerifyOtp } from "./saga/handleVerifyOtp";
 import { handleBankLogin, handleUserLogin } from "./userDetail/userSlice";
 import { handleBankLoginSaga } from "./saga/handleBankLogin";
 import { handleUserLoginSaga } from "./saga/handleUserLogin";
+import { getChequeHistory } from "./saga/getChequeHistory";
 
 export const digiChequeSagas = function* watcher() {
   yield takeLatest(handleCreateChequeRequest.type, handleCreateCheque);
@@ -19,4 +21,5 @@ export const digiChequeSagas = function* watcher() {
   yield takeLatest(handleVerifyOtpRequest.type, handleVerifyOtp);
   yield takeLatest(handleBankLogin.type, handleBankLoginSaga);
   yield takeLatest(handleUserLogin.type, handleUserLoginSaga);
+  yield takeLatest(getChequeHistoryRequest.type, getChequeHistory);
 };
