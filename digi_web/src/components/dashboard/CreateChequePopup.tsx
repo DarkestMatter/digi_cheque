@@ -37,10 +37,15 @@ export const CreateChequePopup: React.FC = () => {
       updateChequeFormData({ name: e.target.name, value: e.target.value })
     );
   };
-  const { amount, name, mobileNumber, email } = useSelector(
-    (state: RootState) => state.createCheque.createChequeForm
-  );
-
+  const { amount, name, mobileNumber, email, chequeClearanceDate, bankId } =
+    useSelector((state: RootState) => state.createCheque.createChequeForm);
+  const disableCreateCheckButton =
+    !amount ||
+    !name ||
+    !mobileNumber ||
+    !email ||
+    !chequeClearanceDate ||
+    !bankId;
   return (
     <>
       <Dialog open={shouldShowCreateChequePopup} onClose={() => {}}>
@@ -118,6 +123,7 @@ export const CreateChequePopup: React.FC = () => {
             Cancel
           </Button>
           <Button
+            disabled={disableCreateCheckButton}
             onClick={() => dispatch(handleCreateChequeRequest({ navigate }))}
           >
             Create Check

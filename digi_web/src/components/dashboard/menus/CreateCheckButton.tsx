@@ -6,10 +6,11 @@ export const CreateCheckButton = () => {
   const dispatch = useDispatch();
   return (
     <Button
-      color="inherit"
+      variant="contained"
+      startIcon={<ControlPointIcon />}
+      style={{ margin: "0 auto", display: "flex" }}
       onClick={() => dispatch(shouldShowCreateChequePopup(true))}
     >
-      <ControlPointIcon />
       Create Check
     </Button>
   );
