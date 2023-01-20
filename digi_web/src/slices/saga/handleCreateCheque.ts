@@ -29,12 +29,12 @@ export function* handleCreateCheque(
       mobileNo: mobileNumber,
       email,
     };
-    const response = yield call(api.chequeRequest.createCheque, request);
-    if (response?.data && response.status === 200) {
-      yield put(saveCurrentTransactionDetails(response.data.data));
-      yield put(shouldShowCreateChequePopup(false));
-      yield put(resetCreateChequeFormData());
-      action.payload.navigate("/auth");
+    const response = yield call(api.chequeRequest.createCheque,request)
+     if(response?.data && response.status === 200){
+      yield put(saveCurrentTransactionDetails(response.data.data))
+      yield put(shouldShowCreateChequePopup(false))
+      yield put(resetCreateChequeFormData())
+      action.payload.navigate('/banklogin')
     }
   } catch (error) {
   } finally {

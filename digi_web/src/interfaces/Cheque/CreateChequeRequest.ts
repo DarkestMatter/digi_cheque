@@ -8,3 +8,6 @@ export interface ICreateChequeRequest {
   mobileNo: number | null;
   email: string | null;
 }
+export interface IAuthorizeCheckRequest{
+  transactionId : string | null
+}

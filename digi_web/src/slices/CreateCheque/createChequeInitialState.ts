@@ -29,5 +29,6 @@ export const createChequeInitialState: ICreateChequeInitialState = {
     email: null,
   },
   chequeHistory: [],
-  isRequestProcessing : false
+  isRequestProcessing : false,
+  isCheckAuthorized : false,
 };
