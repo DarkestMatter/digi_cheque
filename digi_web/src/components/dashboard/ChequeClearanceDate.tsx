@@ -23,6 +23,7 @@ export const ChequeClearanceDate = () => {
         onChange={(newValue) => {
           handleUpdate(newValue);
         }}
+        minDate={new Date()}
         renderInput={(params) => (
           <TextField
             name="chequeClearanceDate"
