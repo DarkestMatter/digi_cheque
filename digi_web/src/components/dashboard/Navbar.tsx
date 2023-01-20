@@ -18,7 +18,7 @@ export const Navbar: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
-    navigate("/");
+    navigate("/dashboard");
   };
 
   const handleProfileClick = () => {

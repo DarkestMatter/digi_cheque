@@ -18,10 +18,11 @@ import {
 import { RootState } from "../../store";
 import { ChequeClearanceDate } from "./ChequeClearanceDate";
 import { ChangeEvent } from "react";
-import { Loader } from "../Loader";
+import { useNavigate } from "react-router-dom";
 
-export const CreateChequePopup = () => {
+export const CreateChequePopup: React.FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { shouldShowCreateChequePopup, createChequeIsInProgress } = useSelector(
     (state: RootState) => {
       const { shouldShowCreateChequePopup, createChequeIsInProgress } =
@@ -36,9 +37,15 @@ export const CreateChequePopup = () => {
       updateChequeFormData({ name: e.target.name, value: e.target.value })
     );
   };
-  const { amount, name, mobileNumber } = useSelector(
-    (state: RootState) => state.createCheque.createChequeForm
-  );
+  const { amount, name, mobileNumber, email, chequeClearanceDate, bankId } =
+    useSelector((state: RootState) => state.createCheque.createChequeForm);
+  const disableCreateCheckButton =
+    !amount ||
+    !name ||
+    !mobileNumber ||
+    !email ||
+    !chequeClearanceDate ||
+    !bankId;
   return (
     <>
       <Dialog open={shouldShowCreateChequePopup} onClose={() => {}}>
@@ -83,7 +90,25 @@ export const CreateChequePopup = () => {
             fullWidth
             variant="standard"
             required
+            onInput={(e: any) => {
+              e.target.value = Math.max(0, parseInt(e.target.value))
+                .toString()
+                .slice(0, 10);
+            }}
             value={mobileNumber}
+            onChange={(e) => handleUpdate(e)}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            name="email"
+            id="email"
+            label="Email"
+            type="email"
+            fullWidth
+            variant="standard"
+            required
+            value={email}
             onChange={(e) => handleUpdate(e)}
           />
           <Box sx={{ paddingTop: 2 }} />
@@ -97,11 +122,13 @@ export const CreateChequePopup = () => {
           >
             Cancel
           </Button>
-          <Button onClick={() => dispatch(handleCreateChequeRequest())}>
+          <Button
+            disabled={disableCreateCheckButton}
+            onClick={() => dispatch(handleCreateChequeRequest({ navigate }))}
+          >
             Create Check
           </Button>
         </DialogActions>
-        {/* {createChequeIsInProgress && <Loader />} */}
       </Dialog>
     </>
   );
