@@ -8,4 +8,8 @@ export const initialState: IUserInput = {
   bankLoginUserName: "",
   bankLoginPassword: "",
   bankLoginStatus: "",
+  authenticationDetails:{
+    isAuthenticated: false,
+    loggedInUserEmail: null
+  }
 };

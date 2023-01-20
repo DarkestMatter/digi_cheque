@@ -4,8 +4,8 @@ import { getUserInput } from "../../selectors/selectors";
 import api from "../../services";
 import {
   handleBankLogin,
+  setIsAuthenticated,
   updateForm,
-  updateLoginStatus,
 } from "../userDetail/userSlice";
 export function* handleUserLoginSaga(
   action: ReturnType<typeof handleBankLogin>
@@ -22,6 +22,12 @@ export function* handleUserLoginSaga(
     const response = yield call(api.chequeRequest.userLogin, request);
     if (response && response.data.status) {
       action.payload.navigate("/dashboard");
+      yield put(
+        setIsAuthenticated({
+          isAuthenticated: true,
+          loggedInUserEmail: userEmail || "",
+        })
+      );
     } else {
       const formObj: IUserInput = {};
       formObj["loginMsg" as keyof IUserInput] = response.data.msg;

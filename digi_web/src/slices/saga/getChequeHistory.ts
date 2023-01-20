@@ -4,6 +4,8 @@ import { SagaIterator } from "redux-saga";
 import { IGetChequeHistory } from "../../interfaces/Cheque/getChequeHistoryResponse";
 import { setChequeHistoryData } from "../CreateCheque";
 import { IChequeHistory } from "../../interfaces/Cheque/chequeHistory";
+import { RootState } from "../reducers";
+import { getLoggedInUserEmailSelector } from "../../selectors/getLoggedInUserEmailSelector";
 const responseMapper = (data: IGetChequeHistory[]) => {
   return data.map((chequeData) => {
     return {
@@ -23,7 +25,8 @@ const responseMapper = (data: IGetChequeHistory[]) => {
 };
 export function* getChequeHistory(): SagaIterator {
   try {
-    const userId = "1002";
+    const state: RootState = yield select();
+    const userId = yield select(getLoggedInUserEmailSelector)
     const response = yield call(api.chequeRequest.getChequehistory, userId);
     if (response?.data && response.status === 200) {
       const data: IChequeHistory[] = responseMapper(response?.data?.data);

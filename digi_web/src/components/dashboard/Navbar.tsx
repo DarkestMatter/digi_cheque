@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { isUserAuthenticatedSelector } from "../../selectors/isUserAuthenticatedSelector";
+import InputIcon from "@mui/icons-material/Input";
+import { Button } from "@mui/material";
 
 const HeaderFixed = styled.div`
   position: fixed;
@@ -23,7 +27,7 @@ export const Navbar: React.FC = () => {
   const handleProfileClick = () => {
     navigate("/profile");
   };
-
+  const isAuthenticated = useSelector(isUserAuthenticatedSelector);
   return (
     <HeaderFixed>
       <Grid container xs={12} justifyContent="space-between">
@@ -32,13 +36,15 @@ export const Navbar: React.FC = () => {
             Digi Cheque
           </h3>
         </Grid>
-        <Grid xs={2}>
-          <Avatar
-            onClick={handleProfileClick}
-            style={{ marginTop: 10, cursor: "pointer" }}
-            src="/broken-image.jpg"
-          />
-        </Grid>
+        {isAuthenticated && (
+          <Grid xs={2}>
+            <Avatar
+              onClick={handleProfileClick}
+              style={{ marginTop: 10, cursor: "pointer" }}
+              src="/broken-image.jpg"
+            />
+          </Grid>
+        )}
       </Grid>
     </HeaderFixed>
   );

@@ -11,6 +11,7 @@ import BankDetails from "./components/reciepent/bankDetails/bankDetails";
 import VerifyOtp from "./components/reciepent/bankDetails/verifyOtp";
 import OtpVerificationSuccessfull from "./components/reciepent/bankDetails/otpVerificationSuccessfull";
 import OtpVerificationFailled from "./components/reciepent/bankDetails/otpVerificationFailled";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 export const Router: React.FC = () => {
   return (
@@ -19,22 +20,65 @@ export const Router: React.FC = () => {
       <div style={{ paddingTop: 120 }}></div>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/banklogin" element={<BankLogin />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/auth" element={<Authorization />} />
-        <Route path="/profile" element={<UserDetails />} />
-        <Route path="/reciepent" element={<BankDetails />} />
-        <Route path="/verifyotp" element={<VerifyOtp />} />
+
         <Route
-          path="/otpVerificationSuccessfull"
-          element={<OtpVerificationSuccessfull />}
+          path="/banklogin"
+          element={
+            <PrivateRoute>
+              <BankLogin />
+            </PrivateRoute>
+          }
         />
         <Route
-          path="/otpVerificationFailled"
-          element={<OtpVerificationFailled />}
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/auth"
+          element={
+            <PrivateRoute>
+              <Authorization />
+            </PrivateRoute>
+          }
         />
 
-        {/* <Route path="/gallery/:galleryType" element={<Gallery />} /> */}
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <UserDetails />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/reciepent"
+          element={
+            <PrivateRoute>
+              <UserDetails />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/verifyotp"
+          element={
+            <PrivateRoute>
+              <VerifyOtp />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/otpVerificationSuccessfull"
+          element={
+            <PrivateRoute>
+              <OtpVerificationFailled />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

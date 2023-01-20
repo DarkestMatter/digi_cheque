@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IAuthenticationDetails } from "../../interfaces/login/authenticationDetails";
 import { initialState } from "../../interfaces/login/initialState";
 import { IUserInput } from "../../interfaces/login/IUserInput";
 
@@ -36,6 +37,9 @@ export const userSlice = createSlice({
       state.bankLoginStatus = action.payload;
     },
     handleUserLogin(state, action: PayloadAction<any>) {},
+    setIsAuthenticated: (state, action: PayloadAction<IAuthenticationDetails>) => {
+      state.authenticationDetails = action.payload;
+    },
   },
 });
 
@@ -44,6 +48,7 @@ export const {
   handleBankLogin,
   updateLoginStatus,
   handleUserLogin,
+  setIsAuthenticated,
 } = userSlice.actions;
 
 export const userInputReducer = userSlice.reducer;

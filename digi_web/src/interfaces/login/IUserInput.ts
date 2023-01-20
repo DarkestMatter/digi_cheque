@@ -1,3 +1,5 @@
+import { IAuthenticationDetails } from "./authenticationDetails";
+
 export interface IUserInput {
   userName?: string;
   userId?: string;
@@ -8,4 +10,5 @@ export interface IUserInput {
   bankLoginUserName?: string;
   bankLoginPassword?: string;
   bankLoginStatus?: string;
+  authenticationDetails?: IAuthenticationDetails
 }
