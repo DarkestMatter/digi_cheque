@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleAuthorizeCheckRequest } from "../../slices/CreateCheque";
 import { RootState } from "../../store";
 import { useNavigate,Link } from "react-router-dom";
+import { getBankName } from "../../utils/getBanckName";
 
 const Authorization: React.FC = () => {
   const { isRequestProcessing } = useSelector(
@@ -23,7 +24,7 @@ const Authorization: React.FC = () => {
       <Card style={{ margin: "10px", padding: "10px", width: "50%" }}>
         <Grid container xs={12} spacing={2} direction="row" justifyContent="center">
           <Grid item xs={12} >
-            <b>{currentTransactionDetails.bankName}</b>
+            <b>{getBankName(currentTransactionDetails.bankName)}</b>
           </Grid>
           <Grid item xs={3}>
             Amount:
