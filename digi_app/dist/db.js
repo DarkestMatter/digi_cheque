@@ -11,7 +11,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 //   return obj.stack;
 // };
 const connect_db = () => {
-    const uri = "mongodb+srv://<userName>:<pwd>@cluster0.tjhxona.mongodb.net/digi_cheque?retryWrites=true&w=majority";
+    const uri = "mongodb+srv://createSagaMiddleware@cluster0.tjhxona.mongodb.net/digi_cheque?retryWrites=true&w=majority";
     try {
         //mongoose.connect("mongodb://127.0.0.1/digi_db");
         mongoose_1.default.connect(uri, {
