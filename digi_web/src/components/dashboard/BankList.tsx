@@ -3,17 +3,7 @@ import { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateChequeFormData } from "../../slices/CreateCheque";
 import { RootState } from "../../store";
-
-const banks = [
-  {
-    name: "ICICI Bank",
-    id: "icic001",
-  },
-  {
-    name: "State Bank of India",
-    id: "sbi002",
-  },
-];
+import { bankData } from "../../utils/bankMockData";
 
 export const BankList = () => {
   const dispatch = useDispatch();
@@ -39,7 +29,8 @@ export const BankList = () => {
         onChange={(e) => handleUpdate(e)}
         value={bankId}
       >
-        {banks.map((bank) => {
+        <option id={"nothing"}></option>
+        {bankData.map((bank) => {
           return (
             <option id={bank.id} value={bank.id}>
               {bank.name}

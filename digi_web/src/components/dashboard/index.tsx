@@ -4,6 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { CreateCheckButton } from "./menus/CreateCheckButton";
+import ChequeHistory from "./chequeHistory";
 
 export default function Dashboard() {
   return (
@@ -13,6 +14,7 @@ export default function Dashboard() {
        <Box sx={{ paddingTop: 6 }} />
         <CreateCheckButton/>
       </Container>
+      <ChequeHistory/>
       <CreateChequePopup />
     </React.Fragment>
   );

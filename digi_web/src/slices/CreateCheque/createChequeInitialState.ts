@@ -8,6 +8,7 @@ export const createChequeInitialState: ICreateChequeInitialState = {
     mobileNumber: null,
     bankId: null,
     chequeClearanceDate: null,
+    email: null,
   },
   createChequeIsInProgress: false,
   profileDetails: {
@@ -27,4 +28,5 @@ export const createChequeInitialState: ICreateChequeInitialState = {
     updatedDate: null,
     email: null,
   },
+  chequeHistory: [],
 };
