@@ -10,4 +10,6 @@ export interface ICreateChequeInitialState {
   profileDetails: IProfileDetails;
   currentTransactionDetails: IcurrentTransactionDetails;
   chequeHistory: IChequeHistory[];
+  isRequestProcessing :boolean
+  isCheckAuthorized : boolean
 }

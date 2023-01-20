@@ -1,21 +1,29 @@
 import { RequestHandler } from "express";
-import { IUserDetail } from "../../interface/login/IUserDetails";
-import { userDetailModel } from "../../model/login/userDetailsModel";
-
-const responce = {
-    chequeID : 1234,
-    isAuthorize : true
-}
-
-export const userAuthentication: RequestHandler = (req, res, next) => {
+import { createChequeModel } from "../../model/createcheque/createchequerequest";
+import { sendEmail } from "../email/sendEmail";
+export const userAuthentication: RequestHandler = async (req, res, next) => {
   try {
-      const err = false
-    // userDetailModel().find({}, (err: Error, result: IUserDetail) => {
-      if (!err) {
-        res.json(responce);
-      } else {
-        res.json("some error occurred");
-      }
-    // });
+    const filter = { transactionId: req.body.transactionId };
+    const update = { chequeStatus: "Authorized" };
+    let response = await createChequeModel().findOneAndUpdate(filter, update, {
+      new: true,
+    });
+    if (response) {
+      const emailObj = {
+        toEmail: "bhushanjire@gmail.com",
+        subject: "test email",
+        text: "Congratulation ....... test body",
+      };
+      sendEmail(emailObj).then((result) => {
+        if (result) {
+          res.status(200).json(response);
+        }
+      });
+    } else {
+      res.status(204).json({
+        success: false,
+        message: "Wrong transaction id",
+      });
+    }
   } catch (err) {}
 };
