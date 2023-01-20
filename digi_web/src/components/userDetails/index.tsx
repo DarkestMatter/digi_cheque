@@ -8,7 +8,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Navbar from "../dashboard/Navbar";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { useEffect } from "react";
@@ -19,12 +18,11 @@ export const UserDetails = () => {
     (state: RootState) => state.createCheque.profileDetails
   );
   const dispatch = useDispatch();
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getProfileDetailsRequest());
-  },[])
+  }, []);
   return (
     <>
-      <Navbar />
       <Box sx={{ paddingTop: 2 }} />
       <Container maxWidth="sm">
         <Card sx={{ minWidth: 275 }}>
