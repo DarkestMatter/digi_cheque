@@ -6,7 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IUserInput } from "../../../interfaces/login/IUserInput";
 import { getUserInput } from "../../../selectors/selectors";
-import { updateForm } from "../../../slices/userDetail/userSlice";
+import {
+  updateForm,
+  handleBankLogin,
+} from "../../../slices/userDetail/userSlice";
 
 export const BankLogin: React.FC = () => {
   const dispatch = useDispatch();
@@ -22,7 +25,7 @@ export const BankLogin: React.FC = () => {
     dispatch(updateForm(formObj));
   };
   const handleGoAuthorization = () => {
-    navigate("/bankAuth");
+    navigate("/auth");
   };
   return (
     <Grid container xs={12} justifyContent="center">
@@ -44,6 +47,7 @@ export const BankLogin: React.FC = () => {
           onChange={(e) => handleInputChange(e, "bankLoginUserName")}
         />
         <TextField
+          autoFocus
           id="bankPassword"
           required
           variant="outlined"
@@ -56,7 +60,9 @@ export const BankLogin: React.FC = () => {
         />
         <Button
           variant="contained"
-          onClick={() => {}}
+          onClick={() => {
+            dispatch(handleBankLogin({ navigate }));
+          }}
           style={{
             width: "25%",
             marginRight: "auto",
