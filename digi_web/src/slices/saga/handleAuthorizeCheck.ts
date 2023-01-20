@@ -19,13 +19,14 @@ export function* handleAuthorizeCheck(
     const { currentTransactionDetails } = state.createCheque;
     const request: IAuthorizeCheckRequest = {
       transactionId: currentTransactionDetails.transactionId,
+      emailId: currentTransactionDetails.email,
     };
     const response = yield call(api.chequeRequest.authorizedCheck, request);
 
     if (response?.data && response.status === 200) {
       yield put(setAuthorization(true));
-
       yield put(saveCurrentTransactionDetails(response.data));
+      action.payload.navigate("/dashboard");
     }
   } catch (error) {
   } finally {

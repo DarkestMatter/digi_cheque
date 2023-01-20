@@ -6,6 +6,7 @@ import Alert from "@mui/material/Alert";
 import { useDispatch, useSelector } from "react-redux";
 import { handleAuthorizeCheckRequest } from "../../slices/CreateCheque";
 import { RootState } from "../../store";
+import { useNavigate } from "react-router-dom";
 
 const Authorization: React.FC = () => {
   const { isRequestProcessing } = useSelector(
@@ -15,8 +16,9 @@ const Authorization: React.FC = () => {
     (state: RootState) => state.createCheque
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const auth = () => {
-    dispatch(handleAuthorizeCheckRequest());
+    dispatch(handleAuthorizeCheckRequest({ navigate }));
   };
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>

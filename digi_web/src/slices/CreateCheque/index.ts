@@ -42,7 +42,7 @@ export const createCheque = createSlice({
     setRequestProcessing : (state, action: PayloadAction<boolean>)=>{
       state.isRequestProcessing = action.payload
     },
-    handleAuthorizeCheckRequest:(state) =>{},
+    handleAuthorizeCheckRequest:(state,action: PayloadAction<any>) =>{},
     setAuthorization : (state, action: PayloadAction<boolean>)=>{
       state.isCheckAuthorized = action.payload
     },

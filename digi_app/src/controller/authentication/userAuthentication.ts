@@ -8,15 +8,21 @@ export const userAuthentication: RequestHandler = async (req, res, next) => {
     let response = await createChequeModel().findOneAndUpdate(filter, update, {
       new: true,
     });
+    
     if (response) {
       const emailObj = {
-        toEmail: "bhushanjire@gmail.com",
-        subject: "test email",
-        text: "Congratulation ....... test body",
+        toEmail: req.body.emailId,
+        subject: "Cheque Authorization",
+        text: "Congratulation .......",
       };
       sendEmail(emailObj).then((result) => {
         if (result) {
           res.status(200).json(response);
+        }else{
+          res.status(204).json({
+            success: false,
+            message: "Some error",
+          });
         }
       });
     } else {
