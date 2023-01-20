@@ -3,6 +3,7 @@ export interface IUserInput {
   userId?: string;
   userEmail?: string;
   userMobile?: string;
+  userPwd?: string;
   loginMsg?: String;
   bankLoginUserName?: string;
   bankLoginPassword?: string;

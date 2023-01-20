@@ -16,7 +16,7 @@ export const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <div style={{ paddingTop: 65 }}></div>
+      <div style={{ paddingTop: 120 }}></div>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/banklogin" element={<BankLogin />} />
@@ -25,9 +25,15 @@ export const Router: React.FC = () => {
         <Route path="/profile" element={<UserDetails />} />
         <Route path="/reciepent" element={<BankDetails />} />
         <Route path="/verifyotp" element={<VerifyOtp />} />
-        <Route path="/otpVerificationSuccessfull" element={<OtpVerificationSuccessfull />} />
-        <Route path="/otpVerificationFailled" element={<OtpVerificationFailled />} />
-        
+        <Route
+          path="/otpVerificationSuccessfull"
+          element={<OtpVerificationSuccessfull />}
+        />
+        <Route
+          path="/otpVerificationFailled"
+          element={<OtpVerificationFailled />}
+        />
+
         {/* <Route path="/gallery/:galleryType" element={<Gallery />} /> */}
       </Routes>
     </BrowserRouter>

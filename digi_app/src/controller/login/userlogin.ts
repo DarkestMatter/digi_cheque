@@ -8,7 +8,7 @@ export const userlogin: RequestHandler = (req, res, next) => {
       { userEmail: req.body?.userEmail },
       (err: Error, result: IUserDetail[]) => {
         if (!err) {
-          if (result[0]?.userPwd === req.body?.password) {
+          if (result[0]?.userPwd === req.body?.userPwd) {
             res.json({ status: true, msg: "Login Successful" });
           } else {
             res.json({ status: false, msg: "Incorrect Email/Password" });
