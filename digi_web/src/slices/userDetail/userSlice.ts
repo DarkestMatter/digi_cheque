@@ -23,9 +23,13 @@ export const userSlice = createSlice({
       }
     },
     handleBankLogin(state, action: PayloadAction<any>) {},
+    updateLoginStatus: (state, action: PayloadAction<string>) => {
+      state.bankLoginStatus = action.payload;
+    },
   },
 });
 
-export const { updateForm, handleBankLogin } = userSlice.actions;
+export const { updateForm, handleBankLogin, updateLoginStatus } =
+  userSlice.actions;
 
 export const userInputReducer = userSlice.reducer;

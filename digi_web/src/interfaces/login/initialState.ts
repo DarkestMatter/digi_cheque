@@ -5,4 +5,5 @@ export const initialState: IUserInput = {
   userId: "",
   bankLoginUserName: "",
   bankLoginPassword: "",
+  bankLoginStatus: "",
 };
