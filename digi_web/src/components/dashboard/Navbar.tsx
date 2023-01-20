@@ -1,26 +1,46 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import { CreateCheckButton } from "./menus/CreateCheckButton";
-import { Notifications } from "./menus/Notifications";
-import { AccountIcon } from "./menus/AccountIcon";
-import { Title } from "./menus/Title";
+import styled from "@emotion/styled";
+import Avatar from "@mui/material/Avatar";
+import Grid from "@mui/material/Grid";
+import { useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+const HeaderFixed = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 65px;
+  z-index: 1;
+  margin-top: -8px;
+  background-color: #147dff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  color: #fff;
+`;
+
+export const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+
+  const handleProfileClick = () => {
+    navigate("/profile");
+  };
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Title />
-          <Box sx={{ flexGrow: 1 }} />
-          <CreateCheckButton />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Notifications />
-            <AccountIcon />
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <HeaderFixed>
+      <Grid container xs={12} justifyContent="space-between">
+        <Grid xs={4}>
+          <h3 style={{ marginLeft: 10 }} onClick={handleLogoClick}>
+            Digi Cheque
+          </h3>
+        </Grid>
+        <Grid xs={2}>
+          <Avatar
+            onClick={handleProfileClick}
+            style={{ marginTop: 10, cursor: "pointer" }}
+            src="/broken-image.jpg"
+          />
+        </Grid>
+      </Grid>
+    </HeaderFixed>
   );
-}
+};

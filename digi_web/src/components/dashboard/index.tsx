@@ -1,8 +1,9 @@
-import Navbar from "./Navbar";
+import { Loader } from "../Loader";
+import { CreateChequePopup } from "./CreateChequePopup";
 const Dashboard = () => {
   return (
     <>
-      <Navbar />
+      <CreateChequePopup />
     </>
   );
 };

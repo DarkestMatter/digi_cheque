@@ -3,13 +3,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "./components/login";
 import { BankLogin } from "./components/bank/login";
 import Dashboard from "./components/dashboard";
-import Authorization from './components/Authorization'
+import Authorization from "./components/Authorization";
 import React from "react";
 import { UserDetails } from "./components/userDetails";
+import { Navbar } from "./components/dashboard/Navbar";
 
 export const Router: React.FC = () => {
   return (
     <BrowserRouter>
+      <Navbar />
+      <div style={{ paddingTop: 65 }}></div>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/banklogin" element={<BankLogin />} />
