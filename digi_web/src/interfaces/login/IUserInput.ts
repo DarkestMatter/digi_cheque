@@ -3,4 +3,5 @@ export interface IUserInput {
   userId?: string;
   bankLoginUserName?: string;
   bankLoginPassword?: string;
+  bankLoginStatus?: string;
 }
