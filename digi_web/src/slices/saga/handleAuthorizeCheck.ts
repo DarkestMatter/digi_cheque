@@ -24,9 +24,8 @@ export function* handleAuthorizeCheck(
     const response = yield call(api.chequeRequest.authorizedCheck, request);
 
     if (response?.data && response.status === 200) {
-      yield put(setAuthorization(true));
       yield put(saveCurrentTransactionDetails(response.data));
-      action.payload.navigate("/dashboard");
+      yield put(setAuthorization(true));
     }
   } catch (error) {
   } finally {

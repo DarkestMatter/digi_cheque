@@ -9,4 +9,5 @@ export interface IcurrentTransactionDetails {
   createdDate: Date | null;
   updatedDate: Date | null;
   email: string | null;
+  name: string | null;
 }
