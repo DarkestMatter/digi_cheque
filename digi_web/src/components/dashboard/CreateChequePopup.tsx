@@ -12,6 +12,7 @@ import { BankList } from "./BankList";
 import { useDispatch, useSelector } from "react-redux";
 import {
   handleCreateChequeRequest,
+  resetCreateChequeFormData,
   shouldShowCreateChequePopup as setShouldShowCreateChequePopup,
   updateChequeFormData,
 } from "../../slices/CreateCheque";
@@ -30,6 +31,10 @@ export const CreateChequePopup: React.FC = () => {
       return { shouldShowCreateChequePopup, createChequeIsInProgress };
     }
   );
+  const handleCancel = () => {
+    dispatch(setShouldShowCreateChequePopup(false));
+    dispatch(resetCreateChequeFormData());
+  };
   const handleUpdate = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -117,11 +122,7 @@ export const CreateChequePopup: React.FC = () => {
           <ChequeClearanceDate />
         </DialogContent>
         <DialogActions>
-          <Button
-            onClick={() => dispatch(setShouldShowCreateChequePopup(false))}
-          >
-            Cancel
-          </Button>
+          <Button onClick={() => handleCancel()}>Cancel</Button>
           <Button
             disabled={disableCreateCheckButton}
             onClick={() => dispatch(handleCreateChequeRequest({ navigate }))}
