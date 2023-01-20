@@ -5,7 +5,10 @@ import {
   CardActions,
   CardContent,
   Container,
+  Grid,
+  IconButton,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { useSelector } from "react-redux";
@@ -14,6 +17,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getProfileDetailsRequest } from "../../slices/CreateCheque";
 import { Navbar } from "../dashboard/Navbar";
+import InputIcon from "@mui/icons-material/Input";
+import { setIsAuthenticated } from "../../slices/userDetail/userSlice";
 export const UserDetails = () => {
   const { name, mobileNumber, email } = useSelector(
     (state: RootState) => state.createCheque.profileDetails
@@ -28,13 +33,35 @@ export const UserDetails = () => {
       <Container maxWidth="sm">
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              Profile Details
-            </Typography>
+            <Grid container spacing={2}>
+              <Grid item xs={10}>
+                <Typography
+                  sx={{ fontSize: 14 }}
+                  color="text.secondary"
+                  gutterBottom
+                >
+                  Profile Details
+                </Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Tooltip
+                  title="Logout"
+                  onClick={() =>
+                    dispatch(
+                      setIsAuthenticated({
+                        isAuthenticated: false,
+                        loggedInUserEmail: null,
+                      })
+                    )
+                  }
+                >
+                  <IconButton>
+                    <InputIcon />
+                  </IconButton>
+                </Tooltip>
+              </Grid>
+            </Grid>
+
             <TextField
               autoFocus
               margin="dense"
