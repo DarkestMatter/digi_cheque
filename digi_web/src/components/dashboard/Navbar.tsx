@@ -8,7 +8,6 @@ const HeaderFixed = styled.div`
   width: 100%;
   height: 65px;
   z-index: 1;
-  margin-top: -8px;
   background-color: #147dff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   color: #fff;

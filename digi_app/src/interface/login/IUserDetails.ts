@@ -1,4 +1,5 @@
 export interface IUserDetail {
-  userName: String;
-  userId: Number;
+  userEmail: String;
+  userPwd: String;
+  userMobile: Number;
 }
