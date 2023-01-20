@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { handleBankDetailsRequest, updateBankFormData } from '../../../slices/reciepent';
 import { RootState } from '../../../store';
 import { ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 const BankDetails = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const paperStyle = { "border-radius": "10px", padding: 50, width: 400, margin: "0 auto",height: 470, "box-shadow": "0px 0px 20px 0px #808c98" }
     const headerStyle = { margin: '20px 100px'}
     const avatarStyle = { backgroundColor: '#1bbd7e', margin: '0px 160px', height: 70, width: 70,}
@@ -35,7 +37,7 @@ const BankDetails = () => {
                 <TextField fullWidth autoFocus variant="standard" required label='Account Number' placeholder="Enter your Account number" margin="dense" value={accountNumber} onChange={(e) => handleUpdate(e)} name="accountNumber" type="number"/>
                 <TextField fullWidth autoFocus variant="standard" required label='IFSC Code' placeholder="Enter your IFSC Code" margin="dense" value={IFSCCode} onChange={(e) => handleUpdate(e)} name="IFSCCode" type="text"/>
             </form>
-            <Button  type='submit' variant='contained' color='primary' centerRipple style={btnstyle} onClick={() => dispatch(handleBankDetailsRequest())}>Submit</Button>
+            <Button  type='submit' variant='contained' color='primary' centerRipple style={btnstyle} onClick={() => dispatch(handleBankDetailsRequest(navigate))}>Submit</Button>
             </Paper>
         </Grid>
     )
