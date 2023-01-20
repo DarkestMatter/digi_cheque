@@ -10,4 +10,9 @@ export const createChequeInitialState: ICreateChequeInitialState = {
     chequeClearanceDate: null,
   },
   createChequeIsInProgress: false,
+  profileDetails:{
+    name:null,
+    email:null,
+    mobileNumber:null,
+  }
 };
