@@ -51,9 +51,9 @@ export const LoginDetails: React.FC = () => {
     <>
       <Grid container xs={12}>
         {loginMsg && (
-          <Grid xs={12} container textAlign="center">
-            <Alert severity="error">
-              This is an error alert — check it out!
+          <Grid xs={12} container justifyContent="center">
+            <Alert severity="error" style={{ marginBottom: 20 }}>
+              {loginMsg}
             </Alert>
           </Grid>
         )}

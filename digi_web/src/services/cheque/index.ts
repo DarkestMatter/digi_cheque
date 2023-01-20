@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ICreateChequeRequest } from "../../interfaces/Cheque/CreateChequeRequest";
 import { IPostBankLogin } from "../../interfaces/login/IPostBankLogin";
+import { IUserInput } from "../../interfaces/login/IUserInput";
 import { envProp } from "../envProp";
 
 class cheque {
@@ -12,6 +13,9 @@ class cheque {
   };
   public bankUserLogin = (payload: IPostBankLogin) => {
     return axios.post(`${envProp.api}/bankUserLogin/`, payload);
+  };
+  public userLogin = (payload: IUserInput) => {
+    return axios.post(`${envProp.api}/userLogin/`, payload);
   };
 }
 
