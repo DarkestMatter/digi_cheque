@@ -57,7 +57,7 @@ export const LoginDetails: React.FC = () => {
             </Alert>
           </Grid>
         )}
-        <Grid xs={12} sm={4} textAlign="center">
+        <Grid xs={12} textAlign="center">
           <TextField
             autoFocus
             margin="dense"
@@ -70,7 +70,7 @@ export const LoginDetails: React.FC = () => {
             sx={{ minWidth: 300 }}
           ></TextField>
         </Grid>
-        <Grid xs={12} sm={4} textAlign="center">
+        <Grid xs={12} textAlign="center">
           <FormControl
             sx={{ m: 1, width: "25ch", minWidth: 300 }}
             variant="outlined"
