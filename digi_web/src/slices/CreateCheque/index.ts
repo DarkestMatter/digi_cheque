@@ -39,6 +39,9 @@ export const createCheque = createSlice({
     setChequeHistoryData: (state, action: PayloadAction<IChequeHistory[]>) => {
       state.chequeHistory = action.payload;
     },
+    setRequestProcessing : (state, action: PayloadAction<boolean>)=>{
+      state.isRequestProcessing = action.payload
+    }
   },
 });
 
@@ -53,6 +56,7 @@ export const {
   resetCreateChequeFormData,
   getChequeHistoryRequest,
   setChequeHistoryData,
+  setRequestProcessing
 } = createCheque.actions;
 
 export const createChequeReducer = createCheque.reducer;
