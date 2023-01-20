@@ -19,8 +19,8 @@ export const reciepent = createSlice({
       // @ts-ignore
       state.otpVerification[action.payload.name] = action.payload.value;
     },
-    handleBankDetailsRequest() {},
-    handleVerifyOtpRequest() {},
+    handleBankDetailsRequest(state, action: PayloadAction<any>) {},
+    handleVerifyOtpRequest(state, action: PayloadAction<any>) {},
   },
 });
 
