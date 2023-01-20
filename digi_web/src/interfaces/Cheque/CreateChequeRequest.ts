@@ -10,4 +10,5 @@ export interface ICreateChequeRequest {
 }
 export interface IAuthorizeCheckRequest{
   transactionId : string | null
+  emailId : string | null
 }
