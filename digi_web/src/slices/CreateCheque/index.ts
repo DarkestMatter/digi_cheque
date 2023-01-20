@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IcurrentTransactionDetails } from "../../interfaces/Cheque/currentTransactionDetails";
 import { IProfileDetails } from "../../interfaces/Cheque/profileDetails";
 import { createChequeInitialState } from "./createChequeInitialState";
 
@@ -16,14 +17,20 @@ export const createCheque = createSlice({
       // @ts-ignore
       state.createChequeForm[action.payload.name] = action.payload.value;
     },
-    handleCreateChequeRequest() {},
+    handleCreateChequeRequest:(state, action:PayloadAction<any>) =>{},
     setCreateChequeIsInProgress: (state, action: PayloadAction<boolean>) => {
       state.createChequeIsInProgress = action.payload;
     },
     setProfileDetails:(state, action: PayloadAction<IProfileDetails>) => {
       state.profileDetails = action.payload;
     },
-    getProfileDetailsRequest(){}
+    getProfileDetailsRequest(){},
+    saveCurrentTransactionDetails:(state, action: PayloadAction<IcurrentTransactionDetails>) => {
+      state.currentTransactionDetails = action.payload;
+    },
+    resetCreateChequeFormData:(state) => {
+      state.createChequeForm = createChequeInitialState.createChequeForm
+    },
   },
 });
 
@@ -34,6 +41,8 @@ export const {
   setCreateChequeIsInProgress,
   setProfileDetails,
   getProfileDetailsRequest,
+  saveCurrentTransactionDetails,
+  resetCreateChequeFormData,
 } = createCheque.actions;
 
 export const createChequeReducer = createCheque.reducer;

@@ -1,9 +1,10 @@
 import { RequestHandler } from "express";
 import { createChequeModel } from "../../model/createcheque/createchequerequest";
+import { v4 as uuidv4 } from 'uuid';
 
 export const createchequerequest: RequestHandler = async (req, res, next) => {
   try {
-    req.body.transactionId = Math.random();
+    req.body.transactionId = uuidv4();
     req.body.chequeStatus = "Open";
     req.body.createdDate = Date.now();
     req.body.updatedDate = Date.now();
