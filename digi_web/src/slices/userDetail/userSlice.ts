@@ -20,16 +20,30 @@ export const userSlice = createSlice({
         case Object.keys(action.payload).includes("bankLoginPassword"):
           state.bankLoginPassword = action.payload.bankLoginPassword;
           break;
+        case Object.keys(action.payload).includes("userEmail"):
+          state.userEmail = action.payload.userEmail;
+          break;
+        case Object.keys(action.payload).includes("userMobile"):
+          state.userMobile = action.payload.userMobile;
+          break;
+        case Object.keys(action.payload).includes("loginMsg"):
+          state.loginMsg = action.payload.loginMsg;
+          break;
       }
     },
     handleBankLogin(state, action: PayloadAction<any>) {},
     updateLoginStatus: (state, action: PayloadAction<string>) => {
       state.bankLoginStatus = action.payload;
     },
+    handleUserLogin(state, action: PayloadAction<any>) {},
   },
 });
 
-export const { updateForm, handleBankLogin, updateLoginStatus } =
-  userSlice.actions;
+export const {
+  updateForm,
+  handleBankLogin,
+  updateLoginStatus,
+  handleUserLogin,
+} = userSlice.actions;
 
 export const userInputReducer = userSlice.reducer;
