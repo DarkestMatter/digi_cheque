@@ -13,6 +13,7 @@ import { RootState } from "../../store";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getProfileDetailsRequest } from "../../slices/CreateCheque";
+import { Navbar } from "../dashboard/Navbar";
 export const UserDetails = () => {
   const { name, mobileNumber, email } = useSelector(
     (state: RootState) => state.createCheque.profileDetails

@@ -1,6 +1,5 @@
 import { Grid, Paper, Avatar, Typography, TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Checkbox, Button } from '@mui/material'
 import React from 'react'
-import Image from '../../../assets/bg_vp.jpg'
 import { RootState } from '../../../store';
 import { ChangeEvent } from "react";
 import { useDispatch, useSelector } from 'react-redux';

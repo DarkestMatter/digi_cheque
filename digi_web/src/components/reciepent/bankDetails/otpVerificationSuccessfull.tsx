@@ -1,11 +1,5 @@
 import { Grid, Paper, Avatar, Typography, TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Checkbox, Button } from '@mui/material'
 import React from 'react'
-import Image from '../../../assets/bg_vp.jpg'
-
-
-
-
-
 const OtpVerificationSuccessfull = () => {
     const paperStyle = { "border-radius": "10px", padding: 30, width: 400, margin: "100px 0px 0px 380px", height: 300, "box-shadow": "0px 0px 20px 0px #808c98" }
     const headerStyle = { margin: '47px 30px 43px',color: 'green' }
