@@ -38,7 +38,6 @@
 .login {
   /* font-size: 50px; */
   font-weight: 900;
-  
 }
 .eula {
   color: #999;
@@ -46,11 +45,13 @@
   line-height: 1.5;
   font-weight: bold;
 }
-.right {
-  box-shadow: 0px 0px 40px 16px rgba(0,0,0,0.22);
-  color: #F1F1F2;
+.loginBox {
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 40%);
+  color: #f1f1f2;
   position: relative;
-  width: 50%;
+  width: 350px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 @media (max-width: 767px) {
   .right {
@@ -60,5 +61,7 @@
     height: calc(100% - 40px);
     max-height: 350px;
   }
+  .loginBox {
+    margin-top: 30px;
+  }
 }
-

@@ -1,13 +1,17 @@
-import { Box, TextField } from "@mui/material";
+import { Box, Grid, TextField } from "@mui/material";
 import "./loginpage.css";
 import { LoginDetails } from ".";
 export const LoginPage = () => {
   return (
     <>
-      <div className="page">
-        <div className="container">
-          <div className="left">
-            <div className="login">Welcome to Digi Cheque</div>
+      <Grid sx={{ flexGrow: 1 }} container xs={12}>
+        <Grid xs={12} md={6}>
+          <Grid xs={12} container justifyContent="center">
+            <div className="login" style={{ marginLeft: -60 }}>
+              Welcome to Digi Cheque
+            </div>
+          </Grid>
+          <Grid xs={12} container justifyContent="center">
             <div className="eula">
               <ul>
                 <li>Quicker clearance</li>
@@ -17,13 +21,16 @@ export const LoginPage = () => {
                 <li>No cheque book required</li>
               </ul>
             </div>
-          </div>
-          <div className="right" style={{ padding: "30px" }}>
-            <Box sx={{ paddingTop: 3 }} />
-            <LoginDetails />
-          </div>
-        </div>
-      </div>
+          </Grid>
+        </Grid>
+        <Grid xs={12} md={6}>
+          <Grid xs={12} container justifyContent="center">
+            <div className="loginBox">
+              <LoginDetails />
+            </div>
+          </Grid>
+        </Grid>
+      </Grid>
     </>
   );
 };
