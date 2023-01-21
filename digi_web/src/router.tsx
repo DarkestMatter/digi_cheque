@@ -17,7 +17,7 @@ export const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <div style={{ paddingTop: 120 }}></div>
+      <div style={{ paddingTop: 50 }}></div>
       <Routes>
         <Route path="/" element={<Login />} />
 

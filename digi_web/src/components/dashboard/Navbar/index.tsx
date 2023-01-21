@@ -54,7 +54,7 @@ export const Navbar: React.FC = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Logo/>
+          <Logo />
           {isAuthenticated && (
             <>
               <Box
