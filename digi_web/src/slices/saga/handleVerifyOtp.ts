@@ -18,7 +18,7 @@ export function* handleVerifyOtp(
     };
     //@ts-ignore
     const response = yield call(api.chequeRequest.verifyOtp, request);
-    if (response && response.data.status === "success") {
+    if (response && response.data.status) {
       action.payload.navigate("/otpVerificationSuccessfull");
     } else {
       action.payload.navigate("/otpVerificationFailled");

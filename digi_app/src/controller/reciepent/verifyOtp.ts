@@ -11,6 +11,7 @@ export const verifyOtp: RequestHandler = (req, res, next) => {
     createChequeModel().find(
       { transactionId: req.body.transId },
       (err: Error, result: ICreatechequerequest[]) => {
+        console.log(result);
         if (!err) {
           if (!result.length) {
             res.json({
@@ -18,20 +19,20 @@ export const verifyOtp: RequestHandler = (req, res, next) => {
             });
           } else {
             if (true) {
-              //result[0]?.otp && result[0]?.otp === req.body.otp
+              console.log(result);
               const mailBody: IMailInterface = {
                 mailSubject: "Digi Cheque - Verified OTP",
                 mailText:
                   "we’d like to inform you that we have verified your email",
-                userEmail: "sachinsj350@gmail.com", //result.email
+                userEmail: result[0]?.email,
               };
               mailController(mailBody);
               res.json({
-                status: "success",
+                status: true,
               });
             } else {
               res.json({
-                status: "failed",
+                status: false,
               });
             }
           }
