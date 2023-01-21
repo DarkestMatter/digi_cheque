@@ -20,12 +20,14 @@ import { getChequeHistoryRequest } from "../../../slices/CreateCheque";
 import RestoreIcon from "@mui/icons-material/Restore";
 import { getBankName } from "../../../utils/getBanckName";
 import { maxWidth } from "@mui/system";
+import useMediaQuery from "@mui/material/useMediaQuery/useMediaQuery";
 
 export default function ChequeHistory() {
   const chequeHistory = useSelector(
     (state: RootState) => state.createCheque.chequeHistory
   );
   const dispatch = useDispatch();
+  const matches = useMediaQuery("(max-width:600px)");
   React.useEffect(() => {
     dispatch(getChequeHistoryRequest());
   }, []);
@@ -41,10 +43,10 @@ export default function ChequeHistory() {
           Cheque History
         </Button>
         <Box sx={{ paddingTop: 4 }} />
-        <Grid>
+        <Grid xs={12}>
           {chequeHistory.length > 0 ? (
-            <>
-              {chequeHistory.map((chequesDetails) => {
+            matches ? (
+              chequeHistory.map((chequesDetails) => {
                 return (
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <Card
@@ -53,7 +55,6 @@ export default function ChequeHistory() {
                         minWidth: "300px",
                         marginTop: "20px",
                       }}
-                      variant="elevation"
                     >
                       <CardContent>
                         <Typography>
@@ -74,19 +75,22 @@ export default function ChequeHistory() {
                     </Card>
                   </div>
                 );
-              })}
-              {/* <TableContainer sx={{ maxHeight: 300 }} component={Paper}>
-              <Table
-                sx={{ minWidth: 650 }}
-                size="small"
-                aria-label="a dense table"
-                stickyHeader
-              >
-                <ChequeHistoryHeader />
-                <ChequeHistoryData />
-              </Table>
-            </TableContainer> */}
-            </>
+              })
+            ) : (
+              <>
+                <TableContainer sx={{ maxHeight: 300 }} component={Paper}>
+                  <Table
+                    sx={{ minWidth: 650 }}
+                    size="small"
+                    aria-label="a dense table"
+                    stickyHeader
+                  >
+                    <ChequeHistoryHeader />
+                    <ChequeHistoryData />
+                  </Table>
+                </TableContainer>
+              </>
+            )
           ) : (
             <NoHistoryMessage />
           )}
