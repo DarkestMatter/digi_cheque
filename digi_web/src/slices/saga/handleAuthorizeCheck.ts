@@ -20,6 +20,7 @@ export function* handleAuthorizeCheck(
     const request: IAuthorizeCheckRequest = {
       transactionId: currentTransactionDetails.transactionId,
       emailId: currentTransactionDetails.email,
+      checkStatus : action.payload.chequeStatus
     };
     const response = yield call(api.chequeRequest.authorizedCheck, request);
 

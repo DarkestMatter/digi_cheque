@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IChequeHistory } from "../../interfaces/Cheque/chequeHistory";
+import { IAuthorize, IChequeHistory } from "../../interfaces/Cheque/chequeHistory";
 import { IcurrentTransactionDetails } from "../../interfaces/Cheque/currentTransactionDetails";
 import { IProfileDetails } from "../../interfaces/Cheque/profileDetails";
 import { createChequeInitialState } from "./createChequeInitialState";
@@ -42,7 +42,7 @@ export const createCheque = createSlice({
     setRequestProcessing: (state, action: PayloadAction<boolean>) => {
       state.isRequestProcessing = action.payload;
     },
-    handleAuthorizeCheckRequest: (state, action: PayloadAction<any>) => {},
+    handleAuthorizeCheckRequest: (state, action: PayloadAction<IAuthorize>) => {},
     setAuthorization: (state, action: PayloadAction<boolean>) => {
       state.isCheckAuthorized = action.payload;
     },
@@ -53,6 +53,9 @@ export const createCheque = createSlice({
     setShouldShowRedirectionPopUp: (state, action: PayloadAction<boolean>) => {
       state.shouldShowRedirectionPopUp = action.payload;
     },
+    setComfirmationPopup(state, action: PayloadAction<boolean>){
+      state.isOpenConfirmationPopup = action.payload
+    }
   },
 });
 
@@ -73,6 +76,7 @@ export const {
   resetStoreRequest,
   setShouldShowCheuqPreview,
   setShouldShowRedirectionPopUp,
+  setComfirmationPopup
 } = createCheque.actions;
 
 export const createChequeReducer = createCheque.reducer;

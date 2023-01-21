@@ -11,3 +11,8 @@ export interface IChequeHistory {
   email: string | null;
   name: string | null;
 }
+
+export interface IAuthorize{
+  chequeStatus : string;
+  navigate : any
+}

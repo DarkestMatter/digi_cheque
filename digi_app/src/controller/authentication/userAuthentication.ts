@@ -7,7 +7,7 @@ import { mailController } from "../mail/mailController";
 export const userAuthentication: RequestHandler = async (req, res, next) => {
   try {
     const filter = { transactionId: req.body.transactionId };
-    const update = { chequeStatus: "Authorized" };
+    const update = { chequeStatus: req.body.checkStatus};
     const response = await createChequeModel().findOneAndUpdate(
       filter,
       update,

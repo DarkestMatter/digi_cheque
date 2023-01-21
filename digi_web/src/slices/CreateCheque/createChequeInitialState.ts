@@ -34,4 +34,5 @@ export const createChequeInitialState: ICreateChequeInitialState = {
   isCheckAuthorized: false,
   shouldShowCheuqPreview: false,
   shouldShowRedirectionPopUp: false,
+  isOpenConfirmationPopup : false
 };
