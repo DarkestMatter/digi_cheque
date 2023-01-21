@@ -1,13 +1,4 @@
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import {
-  Alert,
-  FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  TextField,
-} from "@mui/material";
+import { Alert, Box, TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { ChangeEvent, useState } from "react";
@@ -22,18 +13,9 @@ import {
 
 export const LoginDetails: React.FC = () => {
   const [userPwd, setUserPwd] = useState<string>("");
-  const [showLoginBox, setShowLoginBox] = useState<Boolean>(true);
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userEmail = useSelector(getUserInput).userEmail;
-  const userMobile = useSelector(getUserInput).userMobile;
   const loginMsg = useSelector(getUserInput).loginMsg;
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -63,7 +45,7 @@ export const LoginDetails: React.FC = () => {
             margin="dense"
             label="Enter Email"
             type="string"
-            variant="outlined"
+            variant="standard"
             required
             value={userEmail}
             onChange={(e) => handleInputChange(e, "userEmail")}
@@ -71,65 +53,25 @@ export const LoginDetails: React.FC = () => {
           ></TextField>
         </Grid>
         <Grid xs={12} textAlign="center">
-          <FormControl
-            sx={{ m: 1, width: "25ch", minWidth: 300 }}
-            variant="outlined"
-          >
-            <InputLabel htmlFor="outlined-adornment-password">
-              Password
-            </InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={showPassword ? "text" : "password"}
-              onChange={(e) => setUserPwd(e.target.value)}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password"
-            />
-          </FormControl>
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Password"
+            type="password"
+            variant="standard"
+            required
+            value={userEmail}
+            onChange={(e) => setUserPwd(e.target.value)}
+            sx={{ minWidth: 300 }}
+          ></TextField>
         </Grid>
-        {!showLoginBox && (
-          <Grid xs={12} sm={4} textAlign="center">
-            <TextField
-              autoFocus
-              margin="dense"
-              label="Enter Mobile No"
-              type="number"
-              variant="outlined"
-              required
-              value={userEmail}
-              onChange={(e) => handleInputChange(e, "userMobile")}
-              sx={{ minWidth: 300 }}
-            ></TextField>
-          </Grid>
-        )}
       </Grid>
+      <Box sx={{ paddingTop: 3 }} />
       <Grid xs={12} container justifyContent={"center"}>
-        {showLoginBox ? (
-          <Button onClick={handleLogin}>Login</Button>
-        ) : (
-          <Button onClick={handleRegistration}>Login</Button>
-        )}
+        <Button variant="contained" onClick={handleLogin}>
+          Login
+        </Button>
       </Grid>
-      {/* <Grid xs={12} container justifyContent={"center"}>
-        <span>Not a Member,</span>
-        <span
-          style={{ color: "blue", cursor: "pointer" }}
-          onClick={() => setShowLoginBox(false)}
-        >
-          Register here
-        </span>
-      </Grid> */}
     </>
   );
 };

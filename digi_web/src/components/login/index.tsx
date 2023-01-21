@@ -1,5 +1,5 @@
-import { LoginDetails } from "./loginDetails";
+import { LoginPage } from "./loginDetails/LoginPage";
 
 export const Login: React.FC = () => {
-  return <LoginDetails />;
+  return <LoginPage />;
 };
