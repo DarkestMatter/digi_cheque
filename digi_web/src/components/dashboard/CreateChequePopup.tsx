@@ -134,7 +134,7 @@ export const CreateChequePopup: React.FC = () => {
             disabled={disableCreateCheckButton}
             onClick={() => dispatch(handleCreateChequeRequest({ navigate }))}
           >
-            Create Check
+            Issue Cheque
           </Button>
         </DialogActions>
       </Dialog>
