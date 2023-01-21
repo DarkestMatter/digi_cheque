@@ -1,4 +1,14 @@
-import { Alert, Box, TextField } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import {
+  Alert,
+  Box,
+  FormControl,
+  IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+  TextField,
+} from "@mui/material";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { ChangeEvent, useState } from "react";
@@ -13,6 +23,7 @@ import {
 
 export const LoginDetails: React.FC = () => {
   const [userPwd, setUserPwd] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userEmail = useSelector(getUserInput).userEmail;
@@ -53,17 +64,27 @@ export const LoginDetails: React.FC = () => {
           ></TextField>
         </Grid>
         <Grid xs={12} textAlign="center">
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Password"
-            type="password"
-            variant="standard"
-            required
-            value={userEmail}
-            onChange={(e) => setUserPwd(e.target.value)}
-            sx={{ minWidth: 300 }}
-          ></TextField>
+          <FormControl sx={{ width: "25ch", minWidth: 300 }} variant="standard">
+            <InputLabel htmlFor="standard-adornment-password">
+              Password
+            </InputLabel>
+            <Input
+              id="standard-adornment-password"
+              type={showPassword ? "text" : "password"}
+              onChange={(e) => setUserPwd(e.target.value)}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() => setShowPassword(!showPassword)}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
         </Grid>
       </Grid>
       <Box sx={{ paddingTop: 3 }} />

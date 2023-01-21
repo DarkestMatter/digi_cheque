@@ -51,7 +51,6 @@ export const BankLogin: React.FC = () => {
           onChange={(e) => handleInputChange(e, "bankLoginUserName")}
         />
         <TextField
-          autoFocus
           id="bankPassword"
           required
           variant="outlined"
