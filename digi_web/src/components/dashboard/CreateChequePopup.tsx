@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   handleCreateChequeRequest,
   resetCreateChequeFormData,
+  setShouldShowCheuqPreview,
   shouldShowCreateChequePopup as setShouldShowCreateChequePopup,
   updateChequeFormData,
 } from "../../slices/CreateCheque";
@@ -123,6 +124,12 @@ export const CreateChequePopup: React.FC = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => handleCancel()}>Cancel</Button>
+          <Button
+            disabled={disableCreateCheckButton}
+            onClick={() => dispatch(setShouldShowCheuqPreview(true))}
+          >
+            Preview
+          </Button>
           <Button
             disabled={disableCreateCheckButton}
             onClick={() => dispatch(handleCreateChequeRequest({ navigate }))}

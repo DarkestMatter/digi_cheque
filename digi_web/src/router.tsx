@@ -13,7 +13,6 @@ import OtpVerificationFailled from "./components/reciepent/bankDetails/otpVerifi
 import PrivateRoute from "./components/routing/PrivateRoute";
 import { Navbar } from "./components/dashboard/Navbar";
 
-
 export const Router: React.FC = () => {
   return (
     <BrowserRouter>
