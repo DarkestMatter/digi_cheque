@@ -94,12 +94,12 @@ const OtpVerificationSuccessfull = () => {
         </Grid>
 
         <Grid style={heading2} alignItems={"center"}>
-          Hey, Sachin
+          Hey, {userName}
         </Grid>
 
         <Grid style={heading2} alignItems={"center"}>
-          we’d like to inform you that we have verified your email
-          *********325@gmail.com.
+          we’d like to inform you that we have verified your email *********
+          {email}.
         </Grid>
 
         <Grid style={heading2} alignItems={"center"}>
