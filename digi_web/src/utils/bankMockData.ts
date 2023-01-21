@@ -4,7 +4,7 @@ export const bankData = [
     id: "icic001",
   },
   {
-    name: "SBI",
+    name: "State Bank of India",
     id: "sbi002",
   },
 ];

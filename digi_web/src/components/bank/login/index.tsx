@@ -10,6 +10,8 @@ import {
   updateForm,
   handleBankLogin,
 } from "../../../slices/userDetail/userSlice";
+import { RootState } from "../../../store";
+import { getBankName } from "../../../utils/getBanckName";
 
 export const BankLogin: React.FC = () => {
   const dispatch = useDispatch();
@@ -17,11 +19,15 @@ export const BankLogin: React.FC = () => {
   const bankLoginUserName = useSelector(getUserInput).bankLoginUserName;
   const bankLoginPassword = useSelector(getUserInput).bankLoginPassword;
   const isLoginFailed = useSelector(getUserInput).bankLoginStatus === "failed";
+  const { currentTransactionDetails } = useSelector(
+    (state: RootState) => state.createCheque
+  );
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     name: string
   ) => {
     const formObj: IUserInput = {};
+    //@ts-ignore
     formObj[name as keyof IUserInput] = e.target?.value;
     dispatch(updateForm(formObj));
   };
@@ -29,7 +35,7 @@ export const BankLogin: React.FC = () => {
     <Grid container xs={12} justifyContent="center">
       <Grid container xs={12} justifyContent="center">
         <Typography variant="h5" noWrap>
-          SYNEBANK
+          {getBankName(currentTransactionDetails.bankName)}
         </Typography>
       </Grid>
       <FormControl style={{ width: "50%" }}>
