@@ -6,12 +6,13 @@ import Dashboard from "./components/dashboard";
 import Authorization from "./components/Authorization";
 import React from "react";
 import { UserDetails } from "./components/userDetails";
-import { Navbar } from "./components/dashboard/Navbar";
 import BankDetails from "./components/reciepent/bankDetails/bankDetails";
 import VerifyOtp from "./components/reciepent/bankDetails/verifyOtp";
 import OtpVerificationSuccessfull from "./components/reciepent/bankDetails/otpVerificationSuccessfull";
 import OtpVerificationFailled from "./components/reciepent/bankDetails/otpVerificationFailled";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import { Navbar } from "./components/dashboard/Navbar";
+
 
 export const Router: React.FC = () => {
   return (

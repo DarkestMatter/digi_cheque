@@ -16,7 +16,6 @@ import { RootState } from "../../store";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getProfileDetailsRequest } from "../../slices/CreateCheque";
-import { Navbar } from "../dashboard/Navbar";
 import InputIcon from "@mui/icons-material/Input";
 import { setIsAuthenticated } from "../../slices/userDetail/userSlice";
 export const UserDetails = () => {
