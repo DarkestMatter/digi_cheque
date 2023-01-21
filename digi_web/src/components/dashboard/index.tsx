@@ -10,16 +10,17 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { getChquePreviewDataSelectore } from "../../selectors/getChquePreviewDataSelectore";
 import { CreateChequeConfirmationPopUp } from "./confirmBankRedirection";
+import { DashboardCarousel } from "./dashboardcarousel";
 
-export default function Dashboard() {
+export const Dashboard = () => {
   const shouldShowCheuqPreview = useSelector(
     (state: RootState) => state.createCheque.shouldShowCheuqPreview
   );
   const chequePreviewValue = useSelector(getChquePreviewDataSelectore);
   return (
     <React.Fragment>
-      <CssBaseline />
       <Container fixed>
+        <DashboardCarousel />
         <Box sx={{ paddingTop: 6 }} />
         <CreateCheckButton />
       </Container>
@@ -40,4 +41,4 @@ export default function Dashboard() {
       />
     </React.Fragment>
   );
-}
+};

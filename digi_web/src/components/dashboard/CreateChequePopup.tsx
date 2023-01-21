@@ -138,7 +138,7 @@ export const CreateChequePopup: React.FC = () => {
               dispatch(setShouldShowRedirectionPopUp(true));
             }}
           >
-            Create Check
+            Issue Cheque
           </Button>
         </DialogActions>
       </Dialog>

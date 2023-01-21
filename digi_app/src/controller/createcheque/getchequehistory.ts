@@ -6,9 +6,11 @@ export const getchequehistory: RequestHandler = async (req, res, next) => {
     if (!req.params.id) {
       throw new Error("Invalid request");
     }
-    const checkhistory = await createChequeModel().find({
-      userid: req.params.id,
-    });
+    const checkhistory = await createChequeModel()
+      .find({
+        userid: req.params.id,
+      })
+      .sort({ createdDate: -1 });
     if (!checkhistory.length) {
       res.status(204).json({
         success: true,
