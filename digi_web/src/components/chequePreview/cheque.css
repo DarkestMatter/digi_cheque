@@ -1,0 +1,273 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+.chequepreviecheck {
+  position: relative;
+
+  background-color: white;
+  width: 970px;
+  height: 370px;
+  border: 5px solid white;
+}
+.chequepreviewborder {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 2px solid black;
+}
+.chequepreviewcontainer {
+  background-color: #d1f7fa;
+  overflow: hidden;
+  margin: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 1px solid black;
+}
+.chequepreviewcontent {
+  margin: 5px;
+}
+
+.one {
+  width: 100%;
+}
+.title {
+  width: 300px;
+  text-align: center;
+  font-family: Helvetica;
+  display: inline-block;
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+
+.name {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.1px;
+}
+
+.following {
+  display: inline-block;
+  font-family: Helvetica;
+  font-size: 10px;
+  text-transform: uppercase;
+  border: 1px solid;
+  width: 417px;
+  margin-left: 16px;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+.line {
+  text-align: center;
+  width: 415px;
+  height: 26px;
+  font-size: 8px;
+  padding: 12;
+}
+
+.empty {
+  border-top: 1px solid;
+}
+.chequepreviewinput {
+  font-family: Helvetica;
+  color: #333;
+  background-color: #d1f7fa;
+  text-align: center;
+  border: none;
+  width: auto;
+  text-transform: uppercase;
+}
+input[name="reason"],
+input[name="reason2"] {
+  width: 400px;
+}
+.two {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.box {
+  box-sizing: border-box;
+}
+
+.orderof {
+  border-bottom: 1px solid #333;
+  float: left;
+  width: 95%;
+  position: relative;
+  padding-top: 13px;
+  margin: 0px 0 2px 2em;
+  line-height: 1;
+  height: 30px;
+}
+
+.orderof3 {
+  border-bottom: 1px solid #333;
+  float: left;
+  width: 65%;
+  position: relative;
+  padding-top: 0;
+  padding: 0 0 0 1em;
+  margin: 0px 0 2px 2em;
+  line-height: 1;
+  height: 30px;
+}
+
+.orderof:before {
+  position: absolute;
+  left: -3em;
+  top: 1.3em;
+}
+
+.bd {
+  text-align: right;
+  text-transform: uppercase;
+  font-family: Helvetica;
+  font-size: 20px;
+  letter-spacing: 8px;
+}
+.dollar {
+  text-align: right;
+  text-transform: uppercase;
+  font-family: Helvetica;
+  font-size: 0.5em;
+  margin-left: 298px;
+  position: fixed;
+  top: 162px;
+}
+
+.info {
+  border-collapse: collapse;
+  margin-left: 30px;
+  margin-top: 7px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Helvetica;
+  font-size: 10px;
+  border: 1px solid #333;
+  display: inline-table;
+  width: 30%;
+}
+
+.info1 {
+  border-collapse: collapse;
+  margin-left: 700px;
+  text-align: center;
+}
+
+.chequepreviewinput input[name="date"] {
+  font-size: 13px;
+  width: 56px;
+}
+.chequepreviewinput input[name="name"] {
+  width: 200px;
+  font-size: 17px;
+}
+.chequepreviewinput input[name="num"] {
+  width: 50px;
+  font-size: 13px;
+}
+.chequepreviewinput input[name="description"] {
+  width: 200px;
+  font-size: 14px;
+}
+.chequepreviewinput input[name="discount"] {
+  width: 50px;
+  font-size: 13px;
+}
+.acpadding {
+  padding-top: 10px;
+}
+.chart {
+  border: 1px solid #333;
+  font-weight: normal;
+}
+#discount {
+  border-left: 1px dashed;
+}
+.blank {
+  height: 40px;
+  border: 1px solid #333;
+  font-size: 14px;
+}
+.short {
+  width: 10px;
+}
+.long {
+  width: 20px;
+  font-size: 18px;
+}
+.des {
+  font-size: 15px;
+}
+.amount {
+  text-align: center;
+  width: 144px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Helvetica;
+  font-size: 11px;
+  margin-right: 30px;
+  float: right;
+  display: inline;
+  position: absolute;
+  right: -7px;
+  top: 144px;
+}
+
+input[name="whole"] {
+  text-align: right;
+  width: 72px;
+  right: 544px;
+  top: 204px;
+  font-size: 18px;
+}
+input[name="cent"] {
+  text-align: right;
+  width: 23px;
+  display: inline;
+  font-size: 18px;
+  position: absolute;
+  margin-left: 12px;
+}
+
+.chequepreviewinput input[name="address"],
+input[name="citystate"] {
+  font-size: 13px;
+  width: 260px;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+}
+.chequepreviebank {
+  font-size: 16px;
+  text-align: center;
+  font-family: Helvetica;
+  height: 25px;
+  padding-top: 6px;
+  padding-left: 30px;
+  letter-spacing: 0.5px;
+}
+.chequepreviesignature {
+  margin: 0 10px 30px 0.7em;
+  width: 30%;
+  padding-bottom: -13px;
+  right: 10;
+  float: right;
+}
+.chequepresig {
+  font-family: "Mrs Saint Delafield", cursive;
+  font-size: 2em;
+
+  border-bottom: 1px solid #333;
+  line-height: 0.9em;
+}
