@@ -10,6 +10,7 @@ import { RootState } from "../../store";
 import { useNavigate, Link } from "react-router-dom";
 import { getBankName } from "../../utils/getBanckName";
 import { formatDate } from "../../utils/functions";
+import useMediaQuery from "@mui/material/useMediaQuery/useMediaQuery";
 
 const Authorization: React.FC = () => {
   const { isRequestProcessing } = useSelector(
@@ -20,6 +21,7 @@ const Authorization: React.FC = () => {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const matches = useMediaQuery('(max-width:600px)');
   const auth = () => {
     dispatch(handleAuthorizeCheckRequest({ navigate }));
   };
@@ -32,21 +34,20 @@ const Authorization: React.FC = () => {
 
   return (
     <>
+    <div style={{padding:'20px'}}>
       <Grid
         container
         xs={12}
-        spacing={2}
         direction="row"
         justifyContent="center"
         textAlign="center"
       >
         <Card
           style={{
-            margin: "10px",
             padding: "10px",
-            width: "50%",
+            width: matches ?  "100%" : '50%' ,
             background: "#D3D3D3",
-          }}
+          }}  
         >
           <Grid
             container
@@ -60,25 +61,23 @@ const Authorization: React.FC = () => {
               <b>{getBankName(currentTransactionDetails.bankName)}</b>
             </Grid>
             <Grid item xs={3} textAlign="left">
-              Amount
-            </Grid>
-            <Grid item xs={3}>
-              :
-            </Grid>
-            <Grid item xs={3} textAlign="left">
-              {currentTransactionDetails.amount}
-            </Grid>
-            <Grid item xs={3}></Grid>
-            <Grid item xs={3} textAlign="left">
               Name
             </Grid>
             <Grid item xs={3}>
               :
             </Grid>
-            <Grid item xs={3} textAlign="left">
+            <Grid item xs={6} textAlign="left">
               {currentTransactionDetails.name}
             </Grid>
-            <Grid item xs={3}></Grid>
+            <Grid item xs={3} textAlign="left">
+              Amount
+            </Grid>
+            <Grid item xs={3}>
+              :
+            </Grid>
+            <Grid item xs={6} textAlign="left">
+              {currentTransactionDetails.amount}
+            </Grid>
             <Grid item xs={3} textAlign="left">
               Date
             </Grid>
@@ -91,19 +90,17 @@ const Authorization: React.FC = () => {
           </Grid>
         </Card>
       </Grid>
+      <br/>
       <Grid
         container
         xs={12}
-        spacing={2}
         direction="row"
         justifyContent="center"
         textAlign="center"
-        style={{marginTop : '5px'}}
       >
         <Card style={{
-            margin: "10px",
             padding: "10px",
-            width: "50%",
+            width: matches ?  "100%" : '50%',
            
           }}>
           <Grid item xs={12} spacing={5} style={{marginBottom : '10px'}}>
@@ -144,6 +141,8 @@ const Authorization: React.FC = () => {
           </Grid>
         </Card>
       </Grid>
+    </div>
+
     </>
   );
 };
