@@ -5,8 +5,8 @@ export const mailController = (mailBody: IMailInterface) => {
   let mailTransporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "digicheque.official@gmail.com",
-      pass: "pwd",
+      user: process.env.EMAILSEND,
+      pass: process.env.EMAILPASSWORD,
     },
   });
   let mailDetails = {
