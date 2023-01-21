@@ -12,4 +12,5 @@ export interface ICreateChequeInitialState {
   chequeHistory: IChequeHistory[];
   isRequestProcessing :boolean
   isCheckAuthorized : boolean
+  shouldShowCheuqPreview: boolean
 }
