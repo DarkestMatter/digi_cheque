@@ -1,8 +1,6 @@
 import { RequestHandler } from "express";
 import { IUserDetail } from "../../interface/login/IUserDetails";
-import { IMailInterface } from "../../interface/mail/IMailInterface";
 import { userDetailModel } from "../../model/login/userDetailsModel";
-import { mailController } from "../mail/mailController";
 
 export const userlogin: RequestHandler = (req, res, next) => {
   try {
