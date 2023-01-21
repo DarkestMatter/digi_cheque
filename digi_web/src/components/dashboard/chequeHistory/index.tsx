@@ -33,7 +33,7 @@ export default function ChequeHistory() {
         <Box sx={{ paddingTop: 4 }} />
         {chequeHistory.length > 0 ? (
           <>
-            <TableContainer component={Paper}>
+            <TableContainer sx={{ maxHeight: 300 }} component={Paper}>
               <Table
                 sx={{ minWidth: 650 }}
                 size="small"
