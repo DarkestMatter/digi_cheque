@@ -88,7 +88,7 @@ const OtpVerificationFailled = () => {
           Unable to verify OTP sorry..
         </Grid>
         <Grid style={heading2} alignItems={"center"}>
-          We couldn't verify the email *********325@gmail.com
+          We couldn't verify the email *********{email}
         </Grid>
 
         <Grid alignItems={"center"}>

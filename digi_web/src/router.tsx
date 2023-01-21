@@ -62,7 +62,7 @@ export const Router: React.FC = () => {
           element={<OtpVerificationSuccessfull />}
         />
         <Route
-          path="/otpVerificationSuccessfull"
+          path="/OtpVerificationFailled"
           element={<OtpVerificationFailled />}
         />
       </Routes>
