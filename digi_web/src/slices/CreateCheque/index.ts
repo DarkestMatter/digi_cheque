@@ -46,6 +46,7 @@ export const createCheque = createSlice({
     setAuthorization: (state, action: PayloadAction<boolean>) => {
       state.isCheckAuthorized = action.payload;
     },
+    resetStoreRequest() {},
   },
 });
 
@@ -63,6 +64,7 @@ export const {
   setRequestProcessing,
   handleAuthorizeCheckRequest,
   setAuthorization,
+  resetStoreRequest
 } = createCheque.actions;
 
 export const createChequeReducer = createCheque.reducer;

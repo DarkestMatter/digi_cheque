@@ -3,7 +3,6 @@ import { IUserDetail } from "../../interface/login/IUserDetails";
 import { IMailInterface } from "../../interface/mail/IMailInterface";
 import { createChequeModel } from "../../model/createcheque/createchequerequest";
 import { userDetailModel } from "../../model/login/userDetailsModel";
-import { sendEmail } from "../email/sendEmail";
 import { mailController } from "../mail/mailController";
 export const userAuthentication: RequestHandler = async (req, res, next) => {
   try {
@@ -21,7 +20,6 @@ export const userAuthentication: RequestHandler = async (req, res, next) => {
       const userNameResponse = await userDetailModel().findOne(
         { userEmail: response.userid },
         (err: Error, result: IUserDetail) => {
-          console.log(result);
           const linkText = `http://localhost:3000/reciepent/${response?.transactionId}`;
           const mailBody: IMailInterface = {
             mailSubject: "Accept your Digital Cheque",
