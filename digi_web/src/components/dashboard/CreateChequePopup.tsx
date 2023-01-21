@@ -14,6 +14,7 @@ import {
   handleCreateChequeRequest,
   resetCreateChequeFormData,
   setShouldShowCheuqPreview,
+  setShouldShowRedirectionPopUp,
   shouldShowCreateChequePopup as setShouldShowCreateChequePopup,
   updateChequeFormData,
 } from "../../slices/CreateCheque";
@@ -132,7 +133,10 @@ export const CreateChequePopup: React.FC = () => {
           </Button>
           <Button
             disabled={disableCreateCheckButton}
-            onClick={() => dispatch(handleCreateChequeRequest({ navigate }))}
+            onClick={() => {
+              dispatch(setShouldShowCreateChequePopup(false));
+              dispatch(setShouldShowRedirectionPopUp(true));
+            }}
           >
             Create Check
           </Button>

@@ -5,6 +5,7 @@ import {
   resetCreateChequeFormData,
   saveCurrentTransactionDetails,
   setCreateChequeIsInProgress,
+  setShouldShowRedirectionPopUp,
   shouldShowCreateChequePopup,
 } from "../CreateCheque";
 import { RootState } from "../reducers";
@@ -34,8 +35,9 @@ export function* handleCreateCheque(
     if (response?.data && response.status === 200) {
       yield put(saveCurrentTransactionDetails(response.data.data));
       yield put(shouldShowCreateChequePopup(false));
+      yield put(setShouldShowRedirectionPopUp(false));
       yield put(resetCreateChequeFormData());
-      action.payload.navigate("/banklogin");
+      action.payload.navigate("/redirect");
     }
   } catch (error) {
   } finally {
