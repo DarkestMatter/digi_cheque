@@ -4,6 +4,7 @@ import express from "express";
 import path from "path";
 import { connect_db } from "./db";
 import { router } from "./routes/router";
+import dotenv from 'dotenv'
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
-
+dotenv.config()
 app.use(bodyParser());
 
 app.use(express.static(path.join(__dirname, "../../digi_web/dist")));
