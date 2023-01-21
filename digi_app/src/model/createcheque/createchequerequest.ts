@@ -13,6 +13,7 @@ const createChequeSchema = new mongoose.Schema<ICreatechequerequest>({
   updatedDate: Date,
   email: String,
   name: String,
+  otp: String,
 });
 export const createChequeModel = () =>
   mongoose.model("createCheque", createChequeSchema);

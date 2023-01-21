@@ -39,12 +39,12 @@ export const createCheque = createSlice({
     setChequeHistoryData: (state, action: PayloadAction<IChequeHistory[]>) => {
       state.chequeHistory = action.payload;
     },
-    setRequestProcessing : (state, action: PayloadAction<boolean>)=>{
-      state.isRequestProcessing = action.payload
+    setRequestProcessing: (state, action: PayloadAction<boolean>) => {
+      state.isRequestProcessing = action.payload;
     },
-    handleAuthorizeCheckRequest:(state,action: PayloadAction<any>) =>{},
-    setAuthorization : (state, action: PayloadAction<boolean>)=>{
-      state.isCheckAuthorized = action.payload
+    handleAuthorizeCheckRequest: (state, action: PayloadAction<any>) => {},
+    setAuthorization: (state, action: PayloadAction<boolean>) => {
+      state.isCheckAuthorized = action.payload;
     },
   },
 });
@@ -62,7 +62,7 @@ export const {
   setChequeHistoryData,
   setRequestProcessing,
   handleAuthorizeCheckRequest,
-  setAuthorization
+  setAuthorization,
 } = createCheque.actions;
 
 export const createChequeReducer = createCheque.reducer;
