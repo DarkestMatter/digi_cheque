@@ -150,7 +150,11 @@ const Authorization: React.FC = () => {
               {isCheckAuthorized && (
                 <>
                   <Alert color={!isAuthSuccess ? "success" : "error"}>
-                    Authorization {isAuthSuccess ? "Cancel" : ""} successfull
+                    {`Authorization ${
+                      isAuthSuccess
+                        ? "Cancelled Successfully"
+                        : `successfull, a digitally signed cheque has been sent to ${currentTransactionDetails.name}`
+                    }`}
                   </Alert>
                   &nbsp;
                 </>
