@@ -25,16 +25,16 @@ const VerifyOtp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const paperStyle = {
-    "border-radius": "10px",
-    padding: 30,
-    width: 400,
-    margin: "10px 0px 0px 380px",
-    height: 300,
-    "box-shadow": "0px 0px 20px 0px #808c98",
+    boxShadow: "0 2px 8px 0 rgb(0 0 0 / 40%)",
+    color: "#f1f1f2",
+    position: "relative",
+    width: "400px",
+    paddingTop: "30px",
+    paddingBottom: "30px",
   };
-  const headerStyle = { margin: "20px 130px" };
+  const headerStyle = { margin: "20px 130px", color: "#5b5353" };
   const btnstyle = { width: 100, margin: "40px 150px" };
-  const logo = { height: "59px", width: "73px", "margin-left": "160px" };
+  const logo = { height: "59px", width: "73px" };
   const { otp } = useSelector(
     (state: RootState) => state.reciepent.otpVerification
   );
@@ -44,39 +44,51 @@ const VerifyOtp = () => {
     dispatch(updateOtpData({ name: e.target.name, value: e.target.value }));
   };
   return (
-    <Grid>
-      <Paper style={paperStyle}>
-        <Grid alignItems={"center"}>
-          <img src="./src/assets/otp.png" style={logo} />
-          <h2 style={headerStyle}>Verify OTP</h2>
-        </Grid>
-        <form>
-          <TextField
-            fullWidth
-            autoFocus
-            variant="standard"
-            required
-            label="OTP"
-            placeholder="Enter your OTP"
-            margin="dense"
-            onChange={(e) => handleUpdate(e)}
-            name="otp"
-            type="number"
-            value={otp}
-          />
-        </form>
-        <Button>resend</Button>
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          centerRipple
-          style={btnstyle}
-          onClick={() => dispatch(handleVerifyOtpRequest({ navigate }))}
-        >
-          Submit
-        </Button>
-      </Paper>
+    <Grid xs={12}>
+      <Grid xs={12} container justifyContent="center">
+        <div style={paperStyle}>
+          <Grid container xs={12}>
+            <Grid xs={12}>
+              <Grid container justifyContent="center">
+                <img src="./src/assets/otp.png" style={logo} />
+                <h2 style={headerStyle}>Verify OTP</h2>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid xs={12} container>
+            <Grid xs={12}>
+              <Grid container justifyContent="center">
+                <TextField
+                  autoFocus
+                  variant="standard"
+                  required
+                  label="OTP"
+                  placeholder="Enter your OTP"
+                  margin="dense"
+                  onChange={(e) => handleUpdate(e)}
+                  name="otp"
+                  type="number"
+                  value={otp}
+                  sx={{ minWidth: 300 }}
+                />
+              </Grid>
+            </Grid>
+            <Grid container xs={12} sx={{ marginLeft: 5 }}>
+              <Button>resend</Button>
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            centerRipple
+            style={btnstyle}
+            onClick={() => dispatch(handleVerifyOtpRequest({ navigate }))}
+          >
+            Submit
+          </Button>
+        </div>
+      </Grid>
     </Grid>
   );
 };

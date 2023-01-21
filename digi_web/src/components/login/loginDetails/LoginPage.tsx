@@ -4,7 +4,12 @@ import { LoginDetails } from ".";
 export const LoginPage = () => {
   return (
     <>
-      <Grid sx={{ flexGrow: 1 }} container xs={12}>
+      <Grid
+        sx={{ flexGrow: 1 }}
+        container
+        xs={12}
+        className="loginPageTopPadding"
+      >
         <Grid xs={12} md={6}>
           <Grid xs={12} container justifyContent="center">
             <div className="login" style={{ marginLeft: -60 }}>
