@@ -12,6 +12,7 @@ import OtpVerificationSuccessfull from "./components/reciepent/bankDetails/otpVe
 import OtpVerificationFailled from "./components/reciepent/bankDetails/otpVerificationFailled";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import { Navbar } from "./components/dashboard/Navbar";
+import { Redirection } from "./components/bank/login/redirection";
 
 export const Router: React.FC = () => {
   return (
@@ -20,7 +21,14 @@ export const Router: React.FC = () => {
       <div style={{ paddingTop: 120 }}></div>
       <Routes>
         <Route path="/" element={<Login />} />
-
+        <Route
+          path="/redirect"
+          element={
+            <PrivateRoute>
+              <Redirection />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/banklogin"
           element={

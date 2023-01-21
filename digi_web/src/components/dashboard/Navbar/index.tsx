@@ -9,7 +9,7 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoggedInUserInitialSelector } from "../../../selectors/getLoggedInUserInitialSelector";
 import { settings } from "../../../utils/settings";
@@ -18,6 +18,10 @@ import { isUserAuthenticatedSelector } from "../../../selectors/isUserAuthentica
 import { Logo } from "./Logo";
 
 export const Navbar: React.FC = () => {
+  const location = useLocation();
+  const isBankRoute = ["/banklogin", "/redirect", "/auth"].includes(
+    location.pathname
+  );
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
@@ -50,11 +54,11 @@ export const Navbar: React.FC = () => {
 
   const userInitial = useSelector(getLoggedInUserInitialSelector);
   const isAuthenticated = useSelector(isUserAuthenticatedSelector);
-  return (
+  return isBankRoute ? null : (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Logo/>
+          <Logo />
           {isAuthenticated && (
             <>
               <Box

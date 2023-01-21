@@ -50,6 +50,9 @@ export const createCheque = createSlice({
     setShouldShowCheuqPreview: (state, action: PayloadAction<boolean>) => {
       state.shouldShowCheuqPreview = action.payload;
     },
+    setShouldShowRedirectionPopUp: (state, action: PayloadAction<boolean>) => {
+      state.shouldShowRedirectionPopUp = action.payload;
+    },
   },
 });
 
@@ -69,6 +72,7 @@ export const {
   setAuthorization,
   resetStoreRequest,
   setShouldShowCheuqPreview,
+  setShouldShowRedirectionPopUp,
 } = createCheque.actions;
 
 export const createChequeReducer = createCheque.reducer;

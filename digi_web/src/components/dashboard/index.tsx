@@ -9,6 +9,7 @@ import { ChequePreview } from "../chequePreview/Cheque";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { getChquePreviewDataSelectore } from "../../selectors/getChquePreviewDataSelectore";
+import { CreateChequeConfirmationPopUp } from "./confirmBankRedirection";
 
 export default function Dashboard() {
   const shouldShowCheuqPreview = useSelector(
@@ -24,6 +25,7 @@ export default function Dashboard() {
       </Container>
       <ChequeHistory />
       <CreateChequePopup />
+      <CreateChequeConfirmationPopUp />
       <ChequePreview
         shouldShow={shouldShowCheuqPreview}
         payeName={chequePreviewValue.payeName}
