@@ -10,4 +10,5 @@ export interface ICreatechequerequest {
   createdDate: Date;
   updatedDate: Date;
   email: string;
+  otp: string;
 }

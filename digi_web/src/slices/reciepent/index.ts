@@ -20,15 +20,22 @@ export const reciepent = createSlice({
       state.otpVerification[action.payload.name] = action.payload.value;
     },
     handleBankDetailsRequest(state, action: PayloadAction<any>) {},
+    getChequeDetailsRequest(
+      state,
+      action: PayloadAction<{ transId: string | undefined }>
+    ) {
+      console.log("-----------------------------------", action);
+    },
     handleVerifyOtpRequest(state, action: PayloadAction<any>) {},
   },
 });
 
 export const {
-    updateBankFormData,
-    updateOtpData,
-    handleBankDetailsRequest,
-    handleVerifyOtpRequest,
+  updateBankFormData,
+  updateOtpData,
+  handleBankDetailsRequest,
+  handleVerifyOtpRequest,
+  getChequeDetailsRequest,
 } = reciepent.actions;
 
 export const reciepentReducer = reciepent.reducer;

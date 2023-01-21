@@ -3,9 +3,13 @@ import {
   getChequeHistoryRequest,
   getProfileDetailsRequest,
   handleCreateChequeRequest,
-  handleAuthorizeCheckRequest
+  handleAuthorizeCheckRequest,
 } from "./CreateCheque";
-import { handleBankDetailsRequest, handleVerifyOtpRequest } from "./reciepent";
+import {
+  getChequeDetailsRequest,
+  handleBankDetailsRequest,
+  handleVerifyOtpRequest,
+} from "./reciepent";
 import { getProfileDetails } from "./saga/getProfileDetails";
 import { handleBankDetails } from "./saga/handleBankDetails";
 import { handleCreateCheque } from "./saga/handleCreateCheque";
@@ -15,6 +19,7 @@ import { handleBankLoginSaga } from "./saga/handleBankLogin";
 import { handleUserLoginSaga } from "./saga/handleUserLogin";
 import { getChequeHistory } from "./saga/getChequeHistory";
 import { handleAuthorizeCheck } from "./saga/handleAuthorizeCheck";
+import { getChequeDetails } from "./saga/getChequeDetails";
 
 export const digiChequeSagas = function* watcher() {
   yield takeLatest(handleCreateChequeRequest.type, handleCreateCheque);
@@ -25,4 +30,5 @@ export const digiChequeSagas = function* watcher() {
   yield takeLatest(handleUserLogin.type, handleUserLoginSaga);
   yield takeLatest(getChequeHistoryRequest.type, getChequeHistory);
   yield takeLatest(handleAuthorizeCheckRequest.type, handleAuthorizeCheck);
+  yield takeLatest(getChequeDetailsRequest.type, getChequeDetails);
 };

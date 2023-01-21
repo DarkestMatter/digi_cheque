@@ -55,20 +55,21 @@ export const Router: React.FC = () => {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/reciepent"
-          element={
-            <PrivateRoute>
-              <UserDetails />
-            </PrivateRoute>
-          }
-        />
-
+        <Route path="/reciepent/:transId" element={<BankDetails />} />
         <Route
           path="/verifyotp"
           element={
             <PrivateRoute>
               <VerifyOtp />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/otpVerificationSuccessfull"
+          element={
+            <PrivateRoute>
+              <OtpVerificationFailled />
             </PrivateRoute>
           }
         />
