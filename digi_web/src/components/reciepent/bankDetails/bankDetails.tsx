@@ -161,15 +161,22 @@ const BankDetails = () => {
         <Grid container xs={12}>
           {!isSubmitChequeOnline && (
             <Grid xs={12} style={{ marginTop: 20 }}>
-              <span>
-                Show this QR code at Bank and submit your Cheque or click on
-                Submit to submit it Online
-              </span>
-              <Button
-                onClick={() => setiIsSubmitChequeOnline(!isSubmitChequeOnline)}
-              >
-                Submit
-              </Button>
+              <Grid xs={12} textAlign="center">
+                Show this QR code at Bank and submit your Cheque
+              </Grid>
+              <Grid xs={12} textAlign="center" sx={{ marginTop: 2 }}>
+                OR
+              </Grid>
+              <Grid xs={12} textAlign="center" sx={{ marginTop: 3 }}>
+                <Button
+                  variant="outlined"
+                  onClick={() =>
+                    setiIsSubmitChequeOnline(!isSubmitChequeOnline)
+                  }
+                >
+                  Accept Cheque Online
+                </Button>
+              </Grid>
             </Grid>
           )}
         </Grid>

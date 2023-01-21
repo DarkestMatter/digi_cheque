@@ -13,7 +13,6 @@ import OtpVerificationFailled from "./components/reciepent/bankDetails/otpVerifi
 import PrivateRoute from "./components/routing/PrivateRoute";
 import { Navbar } from "./components/dashboard/Navbar";
 
-
 export const Router: React.FC = () => {
   return (
     <BrowserRouter>
@@ -56,30 +55,15 @@ export const Router: React.FC = () => {
           }
         />
         <Route path="/reciepent/:transId" element={<BankDetails />} />
-        <Route
-          path="/verifyotp"
-          element={
-            <PrivateRoute>
-              <VerifyOtp />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/verifyotp" element={<VerifyOtp />} />
 
         <Route
           path="/otpVerificationSuccessfull"
-          element={
-            <PrivateRoute>
-              <OtpVerificationFailled />
-            </PrivateRoute>
-          }
+          element={<OtpVerificationFailled />}
         />
         <Route
           path="/otpVerificationSuccessfull"
-          element={
-            <PrivateRoute>
-              <OtpVerificationFailled />
-            </PrivateRoute>
-          }
+          element={<OtpVerificationFailled />}
         />
       </Routes>
     </BrowserRouter>

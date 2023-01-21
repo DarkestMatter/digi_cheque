@@ -28,14 +28,20 @@ export const bankDetails: RequestHandler = (req, res, next) => {
             if (result.length) {
               const otp = generateOTP();
               const mailBody: IMailInterface = {
-                mailSubject: "Your One Time Password",
-                mailText: otp,
-                userEmail: "sachinsj350@gmail.com", //result.email
+                mailSubject: "DigiCheque: Your One Time Password",
+                mailText: `Dear Customer \r\n \r\n${otp} is your one time password for accepting your cheque \r\n\r\n \r\nBest Regards \r\nDigi Cheque \r\n\r\n\r\n\r\n--This is a system generated mail--`,
+                userEmail: result[0].email,
               };
               mailController(mailBody);
               const filter = { transactionId: req.body.transId };
               const update = { chequeStatus: "Initiated ", otp: otp };
-              createChequeModel().findOneAndUpdate(filter, update);
+              createChequeModel().findOneAndUpdate(
+                filter,
+                update,
+                (err: Error, result: ICreatechequerequest) => {
+                  console.log(result);
+                }
+              );
               res.json({
                 status: "success",
               });
