@@ -14,4 +14,5 @@ export interface ICreateChequeInitialState {
   isCheckAuthorized: boolean;
   shouldShowCheuqPreview: boolean;
   shouldShowRedirectionPopUp: boolean;
+  isOpenConfirmationPopup : boolean
 }

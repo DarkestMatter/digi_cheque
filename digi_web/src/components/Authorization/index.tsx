@@ -5,25 +5,39 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   handleAuthorizeCheckRequest,
   resetStoreRequest,
+  setComfirmationPopup,
 } from "../../slices/CreateCheque";
 import { RootState } from "../../store";
 import { useNavigate, Link } from "react-router-dom";
 import { getBankName } from "../../utils/getBanckName";
 import { formatDate } from "../../utils/functions";
 import useMediaQuery from "@mui/material/useMediaQuery/useMediaQuery";
+import ConfirmationPopup from "../Confirmation";
+import { chequeStatus } from "../../interfaces/Cheque/CreateChequeRequest";
 
 const Authorization: React.FC = () => {
   const { isRequestProcessing } = useSelector(
     (state: RootState) => state.createCheque
   );
-  const { currentTransactionDetails, isCheckAuthorized } = useSelector(
-    (state: RootState) => state.createCheque
-  );
+  const {
+    currentTransactionDetails,
+    isCheckAuthorized,
+    isOpenConfirmationPopup,
+  } = useSelector((state: RootState) => state.createCheque);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const matches = useMediaQuery("(max-width:600px)");
+
+  const openPopup = () => {
+    dispatch(setComfirmationPopup(true));
+  };
   const auth = () => {
-    dispatch(handleAuthorizeCheckRequest({ navigate }));
+    dispatch(
+      handleAuthorizeCheckRequest({
+        navigate: navigate,
+        chequeStatus: chequeStatus.Authorized,
+      })
+    );
   };
   let displayFormate = "";
   if (currentTransactionDetails?.chequeClearanceDate) {
@@ -31,7 +45,8 @@ const Authorization: React.FC = () => {
       new Date(currentTransactionDetails.chequeClearanceDate)
     );
   }
-
+  const isAuthSuccess =
+    currentTransactionDetails.chequeStatus === chequeStatus.Cancel;
   return (
     <>
       <div style={{ padding: "20px" }}>
@@ -110,6 +125,15 @@ const Authorization: React.FC = () => {
             <Grid item xs={12} spacing={5} style={{ marginBottom: "10px" }}>
               <Button
                 variant="contained"
+                onClick={openPopup}
+                disabled={isRequestProcessing || isCheckAuthorized}
+                color="error"
+              >
+                Cancel
+              </Button>{" "}
+              &nbsp;
+              <Button
+                variant="contained"
                 onClick={auth}
                 disabled={isRequestProcessing || isCheckAuthorized}
               >
@@ -125,7 +149,10 @@ const Authorization: React.FC = () => {
             <Grid item xs={12}>
               {isCheckAuthorized && (
                 <>
-                  <Alert color="success">Authorization successfull</Alert>&nbsp;
+                  <Alert color={!isAuthSuccess ? "success" : "error"}>
+                    Authorization {isAuthSuccess ? "Cancel" : ""} successfull
+                  </Alert>
+                  &nbsp;
                 </>
               )}
             </Grid>
@@ -146,6 +173,7 @@ const Authorization: React.FC = () => {
           </Card>
         </Grid>
       </div>
+      <ConfirmationPopup navigate={navigate} />
     </>
   );
 };

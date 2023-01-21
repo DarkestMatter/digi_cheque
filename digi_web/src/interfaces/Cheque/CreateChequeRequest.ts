@@ -11,4 +11,10 @@ export interface ICreateChequeRequest {
 export interface IAuthorizeCheckRequest{
   transactionId : string | null
   emailId : string | null
+  checkStatus : string | null
+}
+
+export enum chequeStatus{
+  Authorized = 'Authorized',
+  Cancel = 'Cancel'
 }
