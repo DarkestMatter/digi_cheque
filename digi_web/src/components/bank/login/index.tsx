@@ -86,7 +86,8 @@ export const BankLogin: React.FC = () => {
             )}
           </Grid>
           <Button
-            variant="contained"
+            variant="outlined"
+            color="error"
             onClick={() => {
               dispatch(handleBankLogin({ navigate }));
             }}
