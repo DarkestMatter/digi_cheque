@@ -14,30 +14,37 @@ interface IProps {
   amountInWord: string;
   chequeClearanceDate: string;
   handleClose: () => void;
+  isAuth?: boolean;
 }
 
-export const ChequePreview = (props: IProps) => {
+const ChequePreview = (props: IProps) => {
   return (
     <div>
       <div>
         <div
           className="chequepreviecheck"
-          style={{ margin: "auto", marginTop: "10%" }}
+          style={{
+            margin: "auto",
+            marginTop: `${props.isAuth ? "-3%" : "10%"}`,
+          }}
         >
           <div className="chequepreviewborder">
             <div className="chequepreviewcontainer">
-              <Button
-                style={{
-                  cursor: "pointer",
-                  float: "right",
-                  marginTop: "5px",
-                  width: "20px",
-                  marginRight: "10px",
-                }}
-                onClick={() => props.handleClose()}
-              >
-                <CloseIcon />
-              </Button>
+              {
+                !props.isAuth && ( <Button
+                  style={{
+                    cursor: "pointer",
+                    float: "right",
+                    marginTop: "5px",
+                    width: "20px",
+                    marginRight: "10px",
+                  }}
+                  onClick={() => props.handleClose()}
+                >
+                  <CloseIcon />
+                </Button>)
+              }
+             
               <div
                 style={{
                   float: "right",
@@ -122,3 +129,4 @@ export const ChequePreview = (props: IProps) => {
     </div>
   );
 };
+export default ChequePreview;

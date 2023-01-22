@@ -14,16 +14,16 @@ import { formatDate } from "../../utils/functions";
 import useMediaQuery from "@mui/material/useMediaQuery/useMediaQuery";
 import ConfirmationPopup from "../Confirmation";
 import { chequeStatus } from "../../interfaces/Cheque/CreateChequeRequest";
+import { getAuthChequeDataSelector } from "../../selectors/getAuthChequeDataSelector";
+import ChequePreview  from "../chequePreview/ChequePreview";
 
 const Authorization: React.FC = () => {
   const { isRequestProcessing } = useSelector(
     (state: RootState) => state.createCheque
   );
-  const {
-    currentTransactionDetails,
-    isCheckAuthorized,
-    isOpenConfirmationPopup,
-  } = useSelector((state: RootState) => state.createCheque);
+  const { currentTransactionDetails, isCheckAuthorized } = useSelector(
+    (state: RootState) => state.createCheque
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const matches = useMediaQuery("(max-width:600px)");
@@ -39,73 +39,89 @@ const Authorization: React.FC = () => {
       })
     );
   };
-  let displayFormate = "";
-  if (currentTransactionDetails?.chequeClearanceDate) {
-    displayFormate = formatDate(
-      new Date(currentTransactionDetails.chequeClearanceDate)
-    );
-  }
+ 
   const isAuthSuccess =
     currentTransactionDetails.chequeStatus === chequeStatus.Cancel;
+  const getAuthChequeData = useSelector(getAuthChequeDataSelector);
   return (
     <>
+    {
+      !matches && (<ChequePreview
+        shouldShow={true}
+        payeName={getAuthChequeData.payeName}
+        amount={getAuthChequeData.amount}
+        acountNumber={getAuthChequeData.acountNumber}
+        ifsccode={getAuthChequeData.ifsccode}
+        bankAddreess={getAuthChequeData.bankAddreess}
+        bankName={getAuthChequeData.bankName}
+        fromName={getAuthChequeData.fromName}
+        amountInWord={getAuthChequeData.amountInWord}
+        chequeClearanceDate={getAuthChequeData.chequeClearanceDate}
+        isAuth={true}
+      />)
+    }
       <div style={{ padding: "20px" }}>
-        <Grid
-          container
-          xs={12}
-          direction="row"
-          justifyContent="center"
-          textAlign="center"
-        >
-          <Card
-            style={{
-              padding: "10px",
-              width: matches ? "100%" : "50%",
-              background: "#D3D3D3",
-            }}
+
+        {matches && (
+          <Grid
+            container
+            xs={12}
+            direction="row"
+            justifyContent="center"
+            textAlign="center"
           >
-            <Grid
-              container
-              xs={12}
-              spacing={2}
-              direction="row"
-              justifyContent="center"
-              textAlign="center"
+            <Grid item xs={12} textAlign="center">
+                  <b>Cheque Details</b>
+                </Grid>
+            <Card
+              style={{
+                padding: "10px",
+                width: matches ? "100%" : "50%",
+                background: "#D3D3D3",
+              }}
             >
-              <Grid item xs={12} textAlign="center">
-                <b>{getBankName(currentTransactionDetails.bankName)}</b>
+              <Grid
+                container
+                xs={12}
+                spacing={2}
+                direction="row"
+                justifyContent="center"
+                textAlign="center"
+              >
+                <Grid item xs={12} textAlign="center">
+                  <b>{getBankName(currentTransactionDetails.bankName)}</b>
+                </Grid>
+                <Grid item xs={3} textAlign="left">
+                  Name
+                </Grid>
+                <Grid item xs={3}>
+                  :
+                </Grid>
+                <Grid item xs={6} textAlign="left">
+                  {getAuthChequeData.payeName}
+                </Grid>
+                <Grid item xs={3} textAlign="left">
+                  Amount
+                </Grid>
+                <Grid item xs={3}>
+                  :
+                </Grid>
+                <Grid item xs={6} textAlign="left">
+                  {getAuthChequeData.amount}
+                </Grid>
+                <Grid item xs={3} textAlign="left">
+                  Date
+                </Grid>
+                <Grid item xs={3}>
+                  :
+                </Grid>
+                <Grid item xs={6} textAlign="left">
+                  {getAuthChequeData.chequeClearanceDate}
+                </Grid>
               </Grid>
-              <Grid item xs={3} textAlign="left">
-                Name
-              </Grid>
-              <Grid item xs={3}>
-                :
-              </Grid>
-              <Grid item xs={6} textAlign="left">
-                {currentTransactionDetails.name}
-              </Grid>
-              <Grid item xs={3} textAlign="left">
-                Amount
-              </Grid>
-              <Grid item xs={3}>
-                :
-              </Grid>
-              <Grid item xs={6} textAlign="left">
-                {currentTransactionDetails.amount}
-              </Grid>
-              <Grid item xs={3} textAlign="left">
-                Date
-              </Grid>
-              <Grid item xs={3}>
-                :
-              </Grid>
-              <Grid item xs={6} textAlign="left">
-                {displayFormate}
-              </Grid>
-            </Grid>
-          </Card>
-        </Grid>
-        <br />
+            </Card>
+          </Grid>
+        )}
         <Grid
           container
           xs={12}
@@ -120,7 +136,7 @@ const Authorization: React.FC = () => {
             }}
           >
             <Grid item xs={12} spacing={5} style={{ marginBottom: "10px" }}>
-              Click Authorize to digitally sign the check and send to user
+              Click Authorize to digitally sign the check and send to recipient
             </Grid>
             <Grid item xs={12} spacing={5} style={{ marginBottom: "10px" }}>
               <Button

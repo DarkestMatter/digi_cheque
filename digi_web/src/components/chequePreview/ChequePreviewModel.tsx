@@ -2,7 +2,7 @@ import "./cheque.css";
 import { Modal } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { setShouldShowCheuqPreview } from "../../slices/CreateCheque";
-import { ChequePreview } from "./ChequePreview";
+import ChequePreview from "./ChequePreview";
 import { RootState } from "../../store";
 import { getChquePreviewDataSelectore } from "../../selectors/getChquePreviewDataSelectore";
 
