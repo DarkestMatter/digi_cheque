@@ -1,18 +1,4 @@
-import {
-  Grid,
-  Paper,
-  Avatar,
-  Typography,
-  TextField,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  Checkbox,
-  Button,
-} from "@mui/material";
-import React from "react";
+import { Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 const OtpVerificationFailled = () => {
@@ -22,12 +8,12 @@ const OtpVerificationFailled = () => {
 
   const paperStyle = {
     boxShadow: "0 2px 8px 0 rgb(0 0 0 / 40%)",
-    color: "#f1f1f2",
     position: "relative",
     width: "400px",
     paddingTop: "30px",
     paddingBottom: "30px",
     borderRadius: 5,
+    color: "#494848",
   };
   const headerStyle = { margin: "47px 66px 43px", color: "red" };
   const avatarStyle = {
