@@ -27,6 +27,7 @@ const BankDetails = () => {
     width: "400px",
     paddingTop: "30px",
     paddingBottom: "30px",
+    borderRadius: 5,
   };
   const headerStyle = { margin: "20px 100px", color: "#5b5353" };
   const avatarStyle = {

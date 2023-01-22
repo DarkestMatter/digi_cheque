@@ -31,6 +31,7 @@ const VerifyOtp = () => {
     width: "400px",
     paddingTop: "30px",
     paddingBottom: "30px",
+    borderRadius: 5,
   };
   const headerStyle = { margin: "20px 130px", color: "#5b5353" };
   const btnstyle = { width: 100, margin: "40px 150px" };
