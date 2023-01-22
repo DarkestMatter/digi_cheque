@@ -58,10 +58,11 @@ const Authorization: React.FC = () => {
         amountInWord={getAuthChequeData.amountInWord}
         chequeClearanceDate={getAuthChequeData.chequeClearanceDate}
         isAuth={true}
+        handleClose = {()=>{}}
+        
       />)
     }
       <div style={{ padding: "20px" }}>
-
         {matches && (
           <Grid
             container
@@ -69,6 +70,7 @@ const Authorization: React.FC = () => {
             direction="row"
             justifyContent="center"
             textAlign="center"
+            style={{marginBottom:'10px'}}
           >
             <Grid item xs={12} textAlign="center">
                   <b>Cheque Details</b>
@@ -136,7 +138,7 @@ const Authorization: React.FC = () => {
             }}
           >
             <Grid item xs={12} spacing={5} style={{ marginBottom: "10px" }}>
-              Click Authorize to digitally sign the check and send to recipient
+              Click Authorize to digitally sign the cheque and send to recipient
             </Grid>
             <Grid item xs={12} spacing={5} style={{ marginBottom: "10px" }}>
               <Button
