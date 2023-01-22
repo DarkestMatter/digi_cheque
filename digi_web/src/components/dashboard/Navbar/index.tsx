@@ -19,9 +19,8 @@ import { Logo } from "./Logo";
 
 export const Navbar: React.FC = () => {
   const location = useLocation();
-  const isBankRoute = ["/banklogin", "/redirect", "/auth"].includes(
-    location.pathname
-  );
+  const isBankRoute = ["/banklogin", "/auth"].includes(location.pathname);
+  const isBankRedirecting = ["/redirect"].includes(location.pathname);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
@@ -54,7 +53,7 @@ export const Navbar: React.FC = () => {
 
   const userInitial = useSelector(getLoggedInUserInitialSelector);
   const isAuthenticated = useSelector(isUserAuthenticatedSelector);
-  return isBankRoute ? null : (
+  return isBankRedirecting ? null : (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
