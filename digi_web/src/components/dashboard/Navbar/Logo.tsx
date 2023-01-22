@@ -1,6 +1,11 @@
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import { Typography } from "@mui/material";
+import { useSelector } from "react-redux";
+import { getChequeBankNameSelector } from "../../../selectors/selectors";
+import { getBankName } from "../../../utils/getBanckName";
 export const Logo = () => {
+  const isBankRoute = ["/banklogin", "/auth"].includes(location.pathname);
+  const bankName = getBankName(useSelector(getChequeBankNameSelector));
   return (
     <>
       <AccountBalanceIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -37,7 +42,7 @@ export const Logo = () => {
           textDecoration: "none",
         }}
       >
-        Digi Cheque
+        {isBankRoute ? bankName : "Digi Cheque"}
       </Typography>
     </>
   );

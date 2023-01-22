@@ -133,7 +133,8 @@ const Authorization: React.FC = () => {
               </Button>{" "}
               &nbsp;
               <Button
-                variant="contained"
+                variant="outlined"
+                color="error"
                 onClick={auth}
                 disabled={isRequestProcessing || isCheckAuthorized}
               >
