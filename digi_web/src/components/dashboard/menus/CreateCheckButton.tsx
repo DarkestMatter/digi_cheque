@@ -9,7 +9,7 @@ export const CreateCheckButton = () => {
       <Button
         variant="contained"
         startIcon={<Avatar variant="rounded" src={chequeIcon} />}
-        style={{ margin: "0 auto", display: "flex" }}
+        style={{ margin: "0 auto", display: "flex", marginTop: 45 }}
         onClick={() => dispatch(shouldShowCreateChequePopup(true))}
       >
         Write Check
