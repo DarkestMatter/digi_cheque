@@ -25,7 +25,7 @@ const ChequePreview = (props: IProps) => {
           className="chequepreviecheck"
           style={{
             margin: "auto",
-            marginTop: `${props.isAuth ? "-3%" : "10px"}`,
+            marginTop: `${props.isAuth ? "-3%" : "10%"}`,
           }}
         >
           <div className="chequepreviewborder">
