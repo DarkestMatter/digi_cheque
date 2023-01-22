@@ -52,6 +52,7 @@
   width: 350px;
   padding-top: 30px;
   padding-bottom: 30px;
+  border-radius: 5px;
 }
 @media (max-width: 767px) {
   .right {

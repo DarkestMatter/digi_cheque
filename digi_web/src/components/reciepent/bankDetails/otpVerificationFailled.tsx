@@ -21,13 +21,13 @@ const OtpVerificationFailled = () => {
   );
 
   const paperStyle = {
-    "border-radius": "10px",
-    margin: "10px 0px 0px 30px",
-    width: "90%",
-    padding: 30,
-    "background-color": "white",
-    height: 300,
-    "box-shadow": "0px 0px 20px 0px #808c98",
+    boxShadow: "0 2px 8px 0 rgb(0 0 0 / 40%)",
+    color: "#f1f1f2",
+    position: "relative",
+    width: "400px",
+    paddingTop: "30px",
+    paddingBottom: "30px",
+    borderRadius: 5,
   };
   const headerStyle = { margin: "47px 66px 43px", color: "red" };
   const avatarStyle = {
@@ -42,21 +42,24 @@ const OtpVerificationFailled = () => {
   const successStyle = { width: 100, margin: "40px 150px" };
 
   const heading1 = {
-    color: "#f15249",
+    color: "#32ba7c",
     "font-size": "35px",
-    "margin-top": "50px",
+    "margin-bottom": "50px",
+    marginBottom: 30,
   };
 
   const heading2 = {
-    marginTop: "30px",
+    marginTop: "10px",
     color: "black",
-    "font-size": "20px",
-    "margin-top": "40px",
+    "font-size": "15px",
+    "margin-top": "10px",
+    marginLeft: 15,
+    marginRight: 15,
   };
   const heading3 = {
-    marginTop: "30px",
-    color: "red",
-    "font-size": "14px",
+    color: "black",
+    "font-size": "15px",
+    "margin-top": "30px",
     fontStyle: "italic",
   };
 
@@ -75,30 +78,31 @@ const OtpVerificationFailled = () => {
   const inputTextBox = { height: 15 };
 
   const logo = {
-    height: "200px",
-    width: "200px",
-    "margin-left": "800px",
-    "margin-top": "-120px",
+    height: "100px",
+    width: "100px",
+    marginBottom: 30,
   };
 
   return (
-    <Grid>
-      <Paper style={paperStyle}>
-        <Grid style={heading1} alignItems={"center"}>
-          Unable to verify OTP sorry..
-        </Grid>
-        <Grid style={heading2} alignItems={"center"}>
-          We couldn't verify the email *********{email}
-        </Grid>
-
-        <Grid alignItems={"center"}>
-          <img src="./src/assets/fail.png" style={logo} />
-        </Grid>
-
-        <Grid style={heading3} alignItems={"center"}>
-          Note - Please check your details again and try to verify it.
-        </Grid>
-      </Paper>
+    <Grid xs={12}>
+      <Grid xs={12} container justifyContent="center">
+        <div style={paperStyle}>
+          <Grid xs={12}>
+            <Grid container justifyContent="center">
+              <img src="./src/assets/fail.png" style={logo} />
+            </Grid>
+            <Grid xs={12} container justifyContent="center">
+              Unable to verify OTP sorry..
+            </Grid>
+            <Grid style={heading2} container justifyContent="center">
+              We couldn't verify the email *********{email}
+            </Grid>
+            <Grid style={heading3} container justifyContent="center">
+              Note - Please check your details again and try to verify it.
+            </Grid>
+          </Grid>
+        </div>
+      </Grid>
     </Grid>
   );
 };
