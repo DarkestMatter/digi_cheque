@@ -9,6 +9,7 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const db_1 = require("./db");
 const router_1 = require("./routes/router");
+const dotenv_1 = __importDefault(require("dotenv"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(function (req, res, next) {
@@ -17,6 +18,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Credentials", "true");
     next();
 });
+dotenv_1.default.config();
 app.use((0, body_parser_1.default)());
 app.use(express_1.default.static(path_1.default.join(__dirname, "../../digi_web/dist")));
 app.get("/", (req, res) => {

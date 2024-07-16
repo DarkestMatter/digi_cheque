@@ -28,6 +28,6 @@
     "@types/mongoose": "^5.11.97",
     "@types/node": "^18.11.18",
     "@types/uuid": "^9.0.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.22"
   }
 }

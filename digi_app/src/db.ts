@@ -7,15 +7,15 @@ import mongoose, { ConnectOptions } from "mongoose";
 // };
 
 export const connect_db = () => {
-  const uri =
-  `mongodb+srv://${process.env.DB_USER_NAME}:${process.env.DB_PASSWORD}@cluster0.tjhxona.mongodb.net/digi_cheque?retryWrites=true&w=majority`;
+  //const uri =
+  //`mongodb+srv://${process.env.DB_USER_NAME}:${process.env.DB_PASSWORD}@cluster0.tjhxona.mongodb.net/digi_cheque?retryWrites=true&w=majority`;
   try {
-    //mongoose.connect("mongodb://127.0.0.1/digi_db");
-    mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as ConnectOptions);
-    mongoose.Promise = require("bluebird");
+    mongoose.connect("mongodb://127.0.0.1/digi");
+    // mongoose.connect(uri, {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    // } as ConnectOptions);
+    // mongoose.Promise = require("bluebird");
   } catch (err) {
     console.log(err);
   }

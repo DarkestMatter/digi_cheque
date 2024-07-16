@@ -1,13 +1,5 @@
-import { combineReducers } from "@reduxjs/toolkit";
-import { createChequeReducer } from "./CreateCheque";
-import { userInputReducer } from "./userDetail/userSlice";
-import { reciepentReducer } from "./reciepent";
+import { loginReducer } from "./login/loginSlice";
 
-
-export const reducers = combineReducers({
-  form: userInputReducer,
-  createCheque: createChequeReducer,
-  reciepent: reciepentReducer,
-});
-
-export type RootState = ReturnType<typeof reducers>;
+export const reducers = {
+  login: loginReducer,
+};
