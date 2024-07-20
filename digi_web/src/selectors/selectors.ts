@@ -5,7 +5,12 @@ export const state = (state: RootState) => state;
 
 // export const getUserInput = createSelector(state, (state) => state.form);
 
-// export const getChequeBankNameSelector = createSelector(
-//   state,
-//   (state) => state?.createCheque?.currentTransactionDetails?.bankName
-// );
+export const scripDataListSelector = createSelector(
+  state,
+  (state) => state?.scripData?.data
+);
+
+export const scripFeedListSelector = createSelector(
+  state,
+  (state) => state?.scripData.feed
+);

@@ -1,12 +1,22 @@
 import { Grid } from "@mui/material";
-import { esES } from "@mui/x-date-pickers";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Buffer } from "redux-saga";
+import {
+  updateScripData,
+  updateScripFeed,
+} from "../../slices/scripFeed/scripFeedSlice";
+import { IScripData, IScripObject } from "../../interfaces/IScripData";
+import { scripCodeEnum } from "../../services/enum";
+import { scripFeedListSelector } from "../../selectors/selectors";
 
 export const WSConnect: React.FC = () => {
+  const dispatch = useDispatch();
   const token =
-    "CPZ95dgix0fHleQd1RBVuiwcmn+ND1ZTBBO6mLvE5iGV3me8OsXnP+pgEGbPOPihT3y9GQkGEQQdqPzfJT46jXzfy4x/XiZK1jbAG9v23pzldb3sQYa1WA==";
-  const scripFeedList = [1660];
+    "Z2tvKV7B2octIZ8IZrAxTzYInRgEbHZaqcRrOMZ/fYg3e4jCHwBLx+7d/iYrNJNUSXD7pokoZ/Xy9aZg/3hoj0eSLfcr44Ob2y4M91PAs8o3fS5q0wAqgA==";
+
+  const scripFeedList = useSelector(scripFeedListSelector);
+
   const encodeAccessToken = () => {
     function customEncode(str: string | number | boolean) {
       return encodeURIComponent(str)
@@ -33,40 +43,38 @@ export const WSConnect: React.FC = () => {
       ws.send(JSON.stringify(message));
       console.log(message);
     };
-    // ws.on("open", function open() {
-    //   console.log("marketFeed Arrays");
-    //   const message = { a: "mode", v: ["ltp", scripFeedList] };
-    //   ws.send(JSON.stringify(message));
-    // });
-    ws.onmessage = function (data) {
-      //const json = JSON.parse(event.data);
-      console.log(data);
-      const feedObj = {
-        token: data?.readInt32BE(4),
-        ltp: data?.readInt32BE(8) / 100,
-      };
-      //orderPipelineFivePaisa(feedObj);
-      console.log(feedObj);
-      //   if (json.length > 1) {
-      //     const feedObj = {
-      //       token: json?.readInt32BE(4),
-      //       ltp: json?.readInt32BE(8) / 100,
-      //     };
-      //     //orderPipelineFivePaisa(feedObj);
-      //     console.log(feedObj);
-      //   }
+    ws.onmessage = async (event) => {
+      const blob = event.data;
+      //@ts-ignore
+      blob
+        .arrayBuffer()
+        .then(
+          (
+            arrayBuffer: ArrayBufferLike & { BYTES_PER_ELEMENT?: undefined }
+          ) => {
+            const dataView = new DataView(arrayBuffer);
+            if (dataView?.byteLength > 1) {
+              const token = dataView.getInt32(4, false);
+              const ltp = dataView.getInt32(8, false) / 100;
+              const scripObj: IScripObject = {
+                token: token,
+                ltp: ltp,
+              };
+              console.log(scripObj);
+              dispatch(updateScripData(scripObj));
+              dispatch(updateScripFeed(scripObj));
+            }
+          }
+        )
+        .catch((err: any) => {
+          console.log(err);
+        });
     };
   };
 
   useEffect(() => {
     subscribe();
-  });
+  }, [scripFeedList]);
 
-  return (
-    <Grid container>
-      <Grid item xs={12}>
-        This is WS
-      </Grid>
-    </Grid>
-  );
+  return <Grid container></Grid>;
 };
